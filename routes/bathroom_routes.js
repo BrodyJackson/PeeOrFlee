@@ -8,14 +8,62 @@ var bathroom_queries = require('../query_models/bathroom.js');
 
 /* GET all bathrooms */
 router.get('/', function(req, res, next) {
-  bathroom_queries.getAllBathrooms(function(err, rows){
-      if (!err){
-          res.json(rows); 
-      }
-      else{
-          res.json(err); 
-      }
-  })
+    bathroom_queries.getAllBathrooms(function(err, rows){
+        if (!err){
+            res.json(rows); 
+        }
+        else{
+            res.json(err); 
+        }
+    })
 });
+
+//GET bathrooms based on ID
+router.get('/:id', function(req, res, next) {
+    bathroom_queries.getBathroomByID(req.params.id, function(err, rows){
+        if (!err){
+            res.json(rows);
+            console.log("test");  
+        }
+        else{
+            res.json(err); 
+        }
+    })
+}); 
+
+//GET bathrooms based on building
+router.get('/building/:building', function(req, res, next) {
+    bathroom_queries.getBathroomByBuilding(req.params.building, function(err,rows){
+        if (!err){
+            res.json(rows); 
+            console.log("test2");  
+        }
+        else{
+            res.json(err); 
+        }
+    })
+}); 
+
+router.post('/', function(req, res, next) {
+    bathroom_queries.addBathroom(req.body, function(err, rows) {
+        if(!err){
+            res.json(rows); 
+        }
+        else{
+            res.json(err); 
+        }
+    })
+}); 
+
+router.put('/:id', function(req, res, next) {
+    bathroom_queries.updateBathroom(req.params.id, req.body, function(err, rows) {
+        if(!err){
+            res.json(rows); 
+        }
+        else{
+            res.json(err); 
+        }
+    })
+})
 
 module.exports = router;

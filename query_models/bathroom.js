@@ -10,7 +10,9 @@ var Bathroom = {
     }, 
 
     getBathroomByBuilding: function(Building, callback) {
-        return data.query("SELECT * from BATHROOM WHERE building=?", [Building], callback); 
+        console.log("test in query"); 
+        return data.query("SELECT * from BATHROOM WHERE building=?", [Building], callback);
+       
     }, 
 
     addBathroom: function(Bathroom, callback) {

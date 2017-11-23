@@ -3,7 +3,7 @@ var connect = mySQL.createConnection({
     host: 'localhost', 
     user: 'root', 
     password: 'pass',
-    database: 'peeorflee' 
+    database: 'washroom_ratings' 
 }); 
 
 connect.connect(); 

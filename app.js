@@ -1,29 +1,37 @@
+//much of this is generated automatically my using the express generator package, this is the main entry point to the app
+//you can see that the app.use, determines which routing file to use for certain URL's, for example /bathrooms will use the bathroom route file created
+//Essentially, we will continue to define routes for the varius things that we need to access
+//All the specific queries are placed in the query_models folder, and the routes which direct specific URL's to http requests such as GET,POST,PUT that will then call the queries we define
+//Once the frontend is implemented, we will place a call to a specific URL, and these routes will send back an object that can be rendered by the front-end
+
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var cors = require('cors');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var bathroom_routes = require('./routes/bathroom_routes')
 
+//define app as an express app, we will make it use certain routes ect...
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//random stuff created by the express generator 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//These are where we define the routing files for specific URL's
+//index and users are not important, just ignore them for now 
 app.use('/', index);
 app.use('/users', users);
+app.use('/bathrooms',bathroom_routes); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

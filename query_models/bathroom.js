@@ -20,7 +20,11 @@ var Bathroom = {
     },
     
     updateBathroom: function(Id, Bathroom, callback) {
-        return data.query("UPDATE BATHROOM SET stall_num=?, description=?, open=?, wheelchair=?, building=?, room_num=? WHERE id=?", [Bathroom.description, Bathroom.open, Bathroom.wheelchair, Bathroom.building, Bathroom.room_num, Id], callback); 
+        return data.query("UPDATE BATHROOM SET stall_num=?, description=?, open=?, wheelchair=?, building=?, room_num=? WHERE id=?", [Bathroom.stall_num, Bathroom.description, Bathroom.open, Bathroom.wheelchair, Bathroom.building, Bathroom.room_num, Id], callback); 
+    }, 
+
+    deleteBathroom: function(Id, callback) {
+        return data.query("DELETE FROM BATHROOM WHERE id=?", [Id], callback); 
     }
 
     //add more queries here 

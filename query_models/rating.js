@@ -14,7 +14,7 @@ var Rating = {
     }, 
 
     addRating: function(Rating, callback) {
-        return data.query("INSERT INTO RATING VALUES(?,?,?,?,?,?)", [Rating.id, Rating.cleanliness, Rating.wait_time, Rating.user_approval, Rating.overall, Rating.bthrm_id], callback); 
+        return data.query("INSERT INTO RATING VALUES(?,?,?,?,?,?,?,?)", [Rating.id, Rating.bthrm_id, Rating.cleanliness, Rating.wait_time, Rating.user_approval, Rating.overall, Rating.smell, Rating.privacy ], callback); 
     },
     
     updateRating: function(Id, Rating, callback) {
@@ -22,10 +22,8 @@ var Rating = {
     }, 
 
     deleteRating: function(Id, callback) {
-        return data.query("DELETE RATING WHERE id=?", [Id])
+        return data.query("DELETE FROM RATING WHERE id=?", [Id]); 
     }
-
-    //add more queries here 
 }
 
 module.exports = Rating; 

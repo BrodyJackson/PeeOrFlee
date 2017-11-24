@@ -13,7 +13,9 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var bathroom_routes = require('./routes/bathroom_routes')
+var bathroom_routes = require('./routes/bathroom_routes'); 
+var rating_routes = require('./routes/rating_routes'); 
+
 
 //define app as an express app, we will make it use certain routes ect...
 var app = express();
@@ -32,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/bathrooms',bathroom_routes); 
+app.use('/ratings', rating_routes); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

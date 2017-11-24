@@ -64,6 +64,17 @@ router.put('/:id', function(req, res, next) {
             res.json(err); 
         }
     })
-})
+}); 
+
+router.delete('/:id', function(req, res, next) {
+    bathroom_queries.deleteBathroom(req.params.id, function(err, count) {
+        if (!err){
+            res.json(count); 
+        }
+        else {
+            res.json(err); 
+        }
+    })
+}); 
 
 module.exports = router;

@@ -53,9 +53,12 @@
   height: 50px; 
   width: 60%; 
   
-  z-index: 1000;  
+  z-index: 1000; 
+  left: 0;
+  right: 0;
+  margin: 0 auto;   
   margin-top: 20%; 
-  left: 20%; 
+ 
 }
 
 .search_field{
@@ -71,4 +74,40 @@
 
 .seach_field:focus{
   color: black; 
+}
+
+.button_flex_container{
+  position: absolute; 
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  
+  width: 60%; 
+  left: 0;
+  right: 0;
+  margin: 0 auto;  
+  margin-top: 30%; 
+  height: 50px;
+}
+.newFacilityButton, .viewBestButton, .viewRecentButton{
+  background: #FFFFFF;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.50);
+  border-radius: 5px;
+  width: 30%; 
+  z-index: 1000; 
+  
+  /* View Best Facility’s: */
+  font-family: Lato-Light;
+  font-size: 24px;
+  color: #000000;
+}
+
+.uni_logo{
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  margin: 0 auto; 
+  z-index: 1000; 
+  height: 20%; 
+  margin-top: 5%; 
 }

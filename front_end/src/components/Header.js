@@ -53,14 +53,33 @@ class Header extends Component {
         this.setState({currentWashroomView : null, currentRatings : []}); 
     }
 
+    determineRatingAverages(){
+        //array which holds the rating averages, the order goes like this
+        // location, smell, cleanliness, maintanence, wait-time, privacy
+        var ratingAverages = [0,0,0,0,0,0]; 
+        for(let i = 0; i< this.state.currentRatings.length; i++){
+            ratingAverages[0] = ratingAverages[0] + this.state.currentRatings[i].location; 
+            ratingAverages[1] = ratingAverages[1] + this.state.currentRatings[i].smell; 
+            ratingAverages[2] = ratingAverages[2] + this.state.currentRatings[i].cleanliness; 
+            ratingAverages[3] = ratingAverages[3] + this.state.currentRatings[i].maintanence;
+            ratingAverages[4] = ratingAverages[4] + this.state.currentRatings[i].wait_time;
+            ratingAverages[5] = ratingAverages[5] + this.state.currentRatings[i].privacy; 
+        }
+        for (let i =0; i < this.state.currentRatings.length; i++){
+            ratingAverages[i] = Math.round((ratingAverages[i] / this.state.currentRatings.length)); 
+        }
+        console.log(ratingAverages, 'rating averages'); 
+    }
+
     showWashroom() {
         if(this.state.currentWashroomView !== null){
+            this.determineRatingAverages(); 
             let current = this.state.currentWashroomView[0];
             let title = (current.building + " " + current.room_num);  
             return( 
                 <div className = "washroomInfoContainer" onClick = {this.closeWashMenu}>
                     <div className = "infoRow close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <i className="fa fa-times" aria-hidden="true"></i>
                     </div>
                     <div className = "infoRow">
                         <h1 className = "title" >{title}</h1> 

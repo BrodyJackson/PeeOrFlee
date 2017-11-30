@@ -7,11 +7,16 @@ class Header extends Component {
     buttonClick(){
 
     }
+
+    searchResultsClick(e){
+        alert("clicked"); 
+        console.log(e.target); 
+    }
     render(){
         return (
             <div> 
                 <div className="header">
-                    <Searchbar></Searchbar>
+                    <Searchbar click = {this.searchResultsClick.bind(this)}></Searchbar>
                     <div className="button_flex_container">
                         <button type="button" className = "newFacilityButton" onClick={this.buttonClick}> Add New Facility </button>
                         <button type="button" className = "viewBestButton" onClick={this.buttonClick}> View Best Facility's </button> 

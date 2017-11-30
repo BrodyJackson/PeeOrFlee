@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
   height: 2000px; 
@@ -175,4 +177,51 @@
   font-family: Lato-BoldItalic;
   font-size: 15px;
   color: #000000;
+}
+
+.washroomInfoContainer{
+  left: 0; 
+  right: 0; 
+  margin: 0 auto; 
+  width: 50%; 
+  top: 30%; 
+  z-index: 1005; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  position: absolute; 
+  /* Rectangle 9: */
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.50);
+  border-radius: 8px;
+}
+
+.infoRow{
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+}
+.title{
+  /* ICT 123: */
+  margin: 0 auto;  
+  font-family: Lato-Bold;
+  font-size: 64px;
+  color: #10AAAC;
+}
+
+.subTitle{
+  /* Location: */
+  font-family: Lato-Light;
+  font-size: 28px;
+  color: #10AAAC;
+}
+
+.fa, .fatimes{
+  font-size: 28px; 
+}
+
+.close{
+  justify-content: flex-end; 
+  margin: 1% 1% 0 0; 
 }

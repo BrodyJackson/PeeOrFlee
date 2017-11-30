@@ -53,6 +53,7 @@ class Header extends Component {
         this.setState({currentWashroomView : null, currentRatings : []}); 
     }
 
+    //find the averages for each category of the ratings 
     determineRatingAverages(){
         //array which holds the rating averages, the order goes like this
         // location, smell, cleanliness, maintanence, wait-time, privacy
@@ -65,15 +66,32 @@ class Header extends Component {
             ratingAverages[4] = ratingAverages[4] + this.state.currentRatings[i].wait_time;
             ratingAverages[5] = ratingAverages[5] + this.state.currentRatings[i].privacy; 
         }
-        for (let i =0; i < this.state.currentRatings.length; i++){
+        for (let i =0; i < 6; i++){
             ratingAverages[i] = Math.round((ratingAverages[i] / this.state.currentRatings.length)); 
+            console.log(ratingAverages[i]);
         }
         console.log(ratingAverages, 'rating averages'); 
+        return (ratingAverages); 
     }
 
+    //called inside the showwashroom function to create the star icons for inside the div 
+    createStars(averages, category){
+        let stars =""; 
+        for(let i = 0; i < averages[category]; i++){
+        stars = stars.concat("<i class='fa fa-star' aria-hidden='true'></i>"); 
+            
+        }
+        console.log(stars);
+        if(stars == ""){
+            stars = "<p>No Ratings</p>"; 
+        } 
+        return (<div className="stars" dangerouslySetInnerHTML={{__html: stars}}></div>);  
+    }
+
+    //render the washroom info 
     showWashroom() {
         if(this.state.currentWashroomView !== null){
-            this.determineRatingAverages(); 
+            let ratingAverages = this.determineRatingAverages(); 
             let current = this.state.currentWashroomView[0];
             let title = (current.building + " " + current.room_num);  
             return( 
@@ -87,24 +105,29 @@ class Header extends Component {
                     <div className = "infoRow">
                         <div className = "category">
                             <p className = "subTitle">Location</p> 
-                            {/* add value */}
+                            {this.createStars(ratingAverages, 0)}
                         </div>
                         <div className = "category">
-                            <p className = "subTitle">Smell</p> 
+                            <p className = "subTitle">Smell</p>
+                            {this.createStars(ratingAverages, 1)} 
                         </div> 
                         <div className = "category">
                             <p className = "subTitle">Cleanliness</p> 
+                            {this.createStars(ratingAverages, 2)}
                         </div>  
                     </div>  
                     <div className = "infoRow">
                         <div className = "category">
-                            <p className = "subTitle">Maintanence</p> 
+                            <p className = "subTitle">Maintanence</p>
+                            {this.createStars(ratingAverages, 3)} 
                         </div>
                         <div className = "category">
-                            <p className = "subTitle">Wait time</p> 
+                            <p className = "subTitle">Wait time</p>
+                            {this.createStars(ratingAverages, 4)} 
                         </div> 
                         <div className = "category">
                             <p className = "subTitle">Privacy</p> 
+                            {this.createStars(ratingAverages, 5)}
                         </div> 
                     </div>  
 

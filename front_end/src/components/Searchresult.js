@@ -9,12 +9,21 @@ class Searchresult extends Component {
         this.state = {
             currentBathroom: this.props.value
         }
+        this.resultClicked = this.resultClicked.bind(this); 
+    }
+
+    resultClicked(event) {
+        console.log("test"); 
+        event.preventDefault(); 
+        var id = this.state.currentBathroom.id; 
+        this.props.click(id);  
+        console.log("test2"); 
     }
     
     render(){
         console.log("inside search result componenet", this.state.currentBathroom); 
         return (
-            <div className = "resultListItem" onClick = {this.props.click}> 
+            <div className = "resultListItem" onClick = {this.resultClicked}> 
                <div className = "item">
                 <p className = "resultHeader">Building</p> 
                 <p className = "resultValue">{this.state.currentBathroom.building}</p>

@@ -3,20 +3,28 @@ import '../App.css';
 import Searchbar from './Searchbar.js';
 
 class Header extends Component {
-
-    buttonClick(){
-
+    constructor(props){
+        super(props); 
+        this.state = { 
+            selectedId : -1 
+        }
+        this.searchResultsClick = this.searchResultsClick.bind(this); 
     }
 
-    searchResultsClick(e){
+    buttonClick(){
+        //add code here for when the buttons are clicked, probably want to add a name to each button, so can differentiate between
+    }
+
+    searchResultsClick(washroom) {
         alert("clicked"); 
-        console.log(e.target); 
+        console.log(washroom); 
+        // console.log(e.target); 
     }
     render(){
         return (
             <div> 
                 <div className="header">
-                    <Searchbar click = {this.searchResultsClick.bind(this)}></Searchbar>
+                    <Searchbar click = {((message) => this.searchResultsClick(message))}></Searchbar>
                     <div className="button_flex_container">
                         <button type="button" className = "newFacilityButton" onClick={this.buttonClick}> Add New Facility </button>
                         <button type="button" className = "viewBestButton" onClick={this.buttonClick}> View Best Facility's </button> 

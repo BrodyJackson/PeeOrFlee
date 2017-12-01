@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import '../App.css';
 import Searchbar from './Searchbar.js';
+import Ratingblock from './Ratingblock.js';
 
 class Header extends Component {
     constructor(props){
@@ -87,6 +88,14 @@ class Header extends Component {
         } 
         return (<div className="stars" dangerouslySetInnerHTML={{__html: stars}}></div>);  
     }
+    
+    renderAllRatings(averages){ 
+        let ratingHTML = []; 
+        for(let i = 0; i < this.state.currentRatings.length; i++){
+            ratingHTML.push(<Ratingblock  starNums = {averages} rating = {this.state.currentRatings[i]} bathroom = {this.state.currentWashroomView}></Ratingblock>); 
+        }
+        return (ratingHTML); 
+    }
 
     //render the washroom info 
     showWashroom() {
@@ -129,6 +138,9 @@ class Header extends Component {
                             <p className = "subTitle">Privacy</p> 
                             {this.createStars(ratingAverages, 5)}
                         </div> 
+                    </div> 
+                    <div className = "allRatingsContainer"> 
+                        {this.renderAllRatings(ratingAverages)}
                     </div>  
 
                 </div>

@@ -303,3 +303,26 @@
   /* Rectangle 3: */
   background: #F5F5F5;
 }
+
+.recentRatingBlock{
+  /* Rectangle 4: */
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  border-radius: 8px;
+  width: 40%; 
+}
+
+.recentSubContainer{
+  margin: 3% 0 3% 0; 
+  display: flex; 
+  justify-content: space-around; 
+}
+
+.recent_reviews{
+  /* Recent Reviews: */
+  margin: 0; 
+  padding: 0;
+  font-family: Lato-Regular;
+  font-size: 55px;
+  color: #247BA0;
+}

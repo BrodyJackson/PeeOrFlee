@@ -194,9 +194,9 @@ class Header extends Component {
                 </div>
                 {this.showWashroom()}
                 {this.checkNewRating()}
-                <div className = "recentReviewsContainer">
-                    <Recentreviews></Recentreviews>
-                </div>
+                
+                <Recentreviews></Recentreviews>
+              
             </div> 
         );
      }

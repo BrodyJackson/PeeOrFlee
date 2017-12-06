@@ -15,6 +15,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var bathroom_routes = require('./routes/bathroom_routes'); 
 var rating_routes = require('./routes/rating_routes'); 
+var comment_routes = require('./routes/comment_routes')
 
 
 //define app as an express app, we will make it use certain routes ect...
@@ -24,7 +25,7 @@ var app = express();
 //random stuff created by the express generator 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -34,7 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/bathrooms',bathroom_routes); 
-app.use('/ratings', rating_routes); 
+app.use('/ratings', rating_routes);
+app.use('/comments', comment_routes);  
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,6 +44,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {

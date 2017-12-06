@@ -42,5 +42,6 @@ navigate to the front_end folder inside the PeeOrFlee repo then install dependen
 then use - npm start
 
 **Note** the backend will be running on port 3001, and the fron-end on port 3000
+**Note** you will also need to databse .sql file in order to run properly.
 
 

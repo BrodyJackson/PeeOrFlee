@@ -14,7 +14,7 @@ var Rating = {
     }, 
 
     addRating: function(Rating, callback) {
-        return data.query("INSERT INTO RATING VALUES(?,?,?,?,?,?,?,?)", [Rating.id, Rating.bthrm_id, Rating.cleanliness, Rating.wait_time, Rating.user_approval, Rating.overall, Rating.smell, Rating.privacy ], callback); 
+        return data.query("INSERT INTO RATING VALUES(?,?,?,?,?,?,?,?,?,?)", [Rating.id, Rating.bthrm_id, Rating.cleanliness, Rating.wait_time, Rating.user_approval, Rating.overall, Rating.smell, Rating.privacy, Rating.location, Rating.maintanence], callback); 
     },
     
     updateRating: function(Id, Rating, callback) {

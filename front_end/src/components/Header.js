@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import Searchbar from './Searchbar.js';
 import Ratingblock from './Ratingblock.js';
+import Newrating from './Newrating.js';
+import Recentreviews from './Recentreviews.js'; 
 
 class Header extends Component {
     constructor(props){
@@ -9,10 +11,14 @@ class Header extends Component {
         this.state = { 
             selectedId : -1, 
             currentWashroomView: null, 
-            currentRatings : []
+            currentRatings : [], 
+            ratingFlag: false, 
+            rating: null 
         }
         this.searchResultsClick = this.searchResultsClick.bind(this); 
         this.closeWashMenu = this.closeWashMenu.bind(this); 
+        this.newRating = this.newRating.bind(this); 
+        this.resetRatingFlag = this.resetRatingFlag.bind(this); 
     }
 
     buttonClick(){
@@ -104,8 +110,8 @@ class Header extends Component {
             let current = this.state.currentWashroomView[0];
             let title = (current.building + " " + current.room_num);  
             return( 
-                <div className = "washroomInfoContainer" onClick = {this.closeWashMenu}>
-                    <div className = "infoRow close">
+                <div className = "washroomInfoContainer" >
+                    <div className = "infoRow close" onClick = {this.closeWashMenu}>
                         <i className="fa fa-times" aria-hidden="true"></i>
                     </div>
                     <div className = "infoRow">
@@ -142,11 +148,35 @@ class Header extends Component {
                     <div className = "allRatingsContainer"> 
                         {this.renderAllRatings(ratingAverages)}
                     </div>  
-
+                    <div classNae = "newRatingButtonContainer">
+                        <button type="button" className = "newRatingButton" onClick={this.newRating}> New Rating </button>
+                    </div>  
                 </div>
             )
         }
     }
+
+    resetRatingFlag(){
+        this.setState({rating: null}); 
+    }
+
+    newRating(){
+       this.setState({ rating : <Newrating bathroom = {this.state.currentWashroomView} close = {this.resetRatingFlag} ratingId = {this.state.currentRatings.length}></Newrating> }); 
+       this.closeWashMenu();  
+    }
+
+    checkNewRating(){
+        if(this.state.rating != null){
+            return (this.state.rating);
+        }
+    //     let checkResult = null; 
+    //     if(this.state.ratingFlag == true){ 
+    //         checkResult = <Newrating bathroom = {this.state.currentWashroomView} close = {this.resetRatingFlag} ratingId = {this.state.currentRatings.length}></Newrating>;         
+    //     }
+    //    return(checkResult); 
+    }
+
+    
     
 
     render(){
@@ -163,7 +193,10 @@ class Header extends Component {
                     <img className = "uni_logo" src = {require("../images/uc_logo.png")} alt=""></img>  
                 </div>
                 {this.showWashroom()}
-                
+                {this.checkNewRating()}
+                <div className = "recentReviewsContainer">
+                    <Recentreviews></Recentreviews>
+                </div>
             </div> 
         );
      }

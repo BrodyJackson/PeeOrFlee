@@ -62,7 +62,11 @@ class Recentreviews extends Component {
         console.log(object); 
         console.log(sorted, "sorted"); 
         let newest = []; 
-        for (let i = 0; i < 4 ; i ++){
+        let amount = 4; 
+        if (object.length < 4){
+            amount = object.length; 
+        }
+        for (let i = 0; i < amount ; i ++){
             newest.push(sorted[i]); 
         }
         console.log(newest); 

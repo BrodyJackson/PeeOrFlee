@@ -16,8 +16,14 @@ class Header extends Component {
             currentRatings : [], 
             ratingFlag: false, 
             rating: null, 
-            user: "Guest", 
-            loginSignupOpen: false
+            user: {
+                id: null, 
+                name: "Guest",
+                password: 123,
+                admin: false,
+            }, 
+            loginSignupOpen: false, 
+            searchKey : 0
         }
         this.searchResultsClick = this.searchResultsClick.bind(this); 
         this.closeWashMenu = this.closeWashMenu.bind(this); 
@@ -25,7 +31,9 @@ class Header extends Component {
         this.newRating = this.newRating.bind(this); 
         this.resetRatingFlag = this.resetRatingFlag.bind(this); 
         this.loginSignupRender = this.loginSignupRender.bind(this);
-        this.loginSignup = this.loginSignup.bind(this);  
+        this.loginSignup = this.loginSignup.bind(this); 
+        this.deleteWashroom = this.deleteWashroom.bind(this);
+        this.forceRefresh = this.forceRefresh.bind(this);  
     }
 
     buttonClick(){
@@ -101,26 +109,50 @@ class Header extends Component {
         } 
         return (<div className="stars" dangerouslySetInnerHTML={{__html: stars}}></div>);  
     }
+
+    forceRefresh(){
+        alert("back"); 
+        let currentId = this.state.selectedId;  
+        this.setState({currentWashroomView : null, currentRatings : []})
+        this.searchResultsClick(currentId); 
+    }
     
     renderAllRatings(averages){ 
         let ratingHTML = []; 
         for(let i = 0; i < this.state.currentRatings.length; i++){
-            ratingHTML.push(<Ratingblock  starNums = {averages} rating = {this.state.currentRatings[i]} bathroom = {this.state.currentWashroomView}></Ratingblock>); 
+            ratingHTML.push(<Ratingblock  starNums = {averages} rating = {this.state.currentRatings[i]} bathroom = {this.state.currentWashroomView} user = {this.state.user} deleteClick = {this.forceRefresh}></Ratingblock>); 
         }
         return (ratingHTML); 
     }
 
+    deleteWashroom(){
+        let newSearchKey = (this.state.searchKey + 1); 
+        let url = ("/bathrooms/" + this.state.selectedId); 
+        return fetch(url, {
+            method: 'delete'
+        })
+        .then(response => response.json())
+        .then(this.closeWashMenu())
+        .then(this.setState({searchKey : newSearchKey})); 
+        //add the code which will actually delete the washroom
+    }
     //render the washroom info 
     showWashroom() {
         if(this.state.currentWashroomView !== null){
             let ratingAverages = this.determineRatingAverages(); 
             let current = this.state.currentWashroomView[0];
-            let title = (current.building + " " + current.room_num);  
+            let title = (current.building + " " + current.room_num);
+            let deleteDiv = []; 
+            if(this.state.user.admin == 1){
+                deleteDiv.push(<div className = "" onClick = {this.deleteWashroom}><i class="fa fa-trash" aria-hidden="true"></i></div>); 
+            }  
             return( 
                 <div className = "washroomInfoContainer" >
                     <div className = "infoRow close" onClick = {this.closeWashMenu}>
                         <i className="fa fa-times" aria-hidden="true"></i>
+                        {deleteDiv}
                     </div>
+
                     <div className = "infoRow">
                         <h1 className = "title" >{title}</h1> 
                     </div>
@@ -168,7 +200,7 @@ class Header extends Component {
     }
 
     newRating(){
-       this.setState({ rating : <Newrating bathroom = {this.state.currentWashroomView} close = {this.resetRatingFlag} ratingId = {this.state.currentRatings.length}></Newrating> }); 
+       this.setState({ rating : <Newrating bathroom = {this.state.currentWashroomView} close = {this.resetRatingFlag} ratingId = {this.state.currentRatings.length} user = {this.state.user}></Newrating> }); 
        this.closeWashMenu();  
     }
 
@@ -193,14 +225,14 @@ class Header extends Component {
         console.log("in render")
         if(this.state.loginSignupOpen == true){
             return(
-               <Loginpage close = {this.closeLoginMenu} userUpdate = {((name) => this.updateUser(name))}></Loginpage>
+               <Loginpage close = {this.closeLoginMenu} userUpdate = {((user) => this.updateUser(user))}></Loginpage>
             ); 
         }
        
     }
 
-    updateUser(user){
-        this.setState({user : user}); 
+    updateUser(userObject){
+        this.setState({user : userObject }); 
         console.log(this.state.user); 
     }
     closeLoginMenu(){
@@ -211,7 +243,7 @@ class Header extends Component {
         return (
             <div> 
                 <div className="header">
-                    <Searchbar click = {((message) => this.searchResultsClick(message))}></Searchbar>
+                    <Searchbar key = {this.state.searchKey} click = {((message) => this.searchResultsClick(message))}></Searchbar>
                     <div className="button_flex_container">
                         <button type="button" className = "newFacilityButton" onClick={this.buttonClick}> Add New Facility </button>
                         <button type="button" className = "viewBestButton" onClick={this.buttonClick}> View Best Facility's </button> 

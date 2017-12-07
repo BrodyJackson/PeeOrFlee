@@ -40,7 +40,7 @@ class Loginpage extends Component {
         event.preventDefault(); 
         for(let i = 0; i < this.state.users.length; i++){
             if(this.state.userName == this.state.users[i].name){ 
-                this.props.userUpdate(this.state.users[i].name); 
+                this.props.userUpdate(this.state.users[i]); 
                 foundResult = true; 
             }
         }
@@ -83,11 +83,9 @@ class Loginpage extends Component {
               password: '123', 
               admin: this.state.admin          
             })
-          });     
-        alert("new user"); 
-        this.setState({message: "User Created"});                
-        
-        // this.close(); 
+          });      
+        this.setState({message: "User Created"}); 
+        this.componentWillMount();                
     }
 
 

@@ -22,7 +22,7 @@ var Rating = {
     }, 
 
     deleteRating: function(Id, callback) {
-        return data.query("DELETE FROM RATING WHERE id=?", [Id]); 
+        return data.query("DELETE FROM RATING WHERE id=?", [Id], callback); 
     }
 }
 

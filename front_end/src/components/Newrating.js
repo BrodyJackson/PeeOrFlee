@@ -17,7 +17,8 @@ class Newrating extends Component {
                 privacy: 1
             }, 
             comment : "", 
-            ratingId : this.props.ratingId
+            ratingId : this.props.ratingId, 
+            user: this.props.user
         }
         this.handleChange = this.handleChange.bind(this); 
         this.close = this.close.bind(this);
@@ -40,7 +41,7 @@ class Newrating extends Component {
               bthrm_id: this.state.bathroom[0].id, 
               cleanliness: this.state.value.cleanliness,
               wait_time: this.state.value.wait_time,
-              user_approval: 5, //value is hardcoded, we aren't doing anything with this
+              user_approval: this.state.user.name, //value is hardcoded, we aren't doing anything with this
               overall: 5, //value is hardcoded, we aren't doing anything with this
               smell: this.state.value.smell,
               privacy: this.state.value.privacy,

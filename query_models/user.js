@@ -14,7 +14,7 @@ var User = {
     },
     
     deleteUser: function(Id, callback) {
-        return data.query("DELETE FROM USER WHERE id=?", [Id]); 
+        return data.query("DELETE FROM USER WHERE id=?", [Id], callback); 
     }
 }
 

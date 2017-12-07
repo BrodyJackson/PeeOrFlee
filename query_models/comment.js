@@ -14,7 +14,7 @@ var Comment = {
     },
     
     deleteComment: function(Id, callback) {
-        return data.query("DELETE FROM COMMENT WHERE id=?", [Id]); 
+        return data.query("DELETE FROM COMMENT WHERE id=?", [Id], callback); 
     }
 }
 

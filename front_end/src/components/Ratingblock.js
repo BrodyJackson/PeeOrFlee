@@ -10,9 +10,12 @@ class Ratingblock extends Component {
             bathroom: this.props.bathroom, 
             rating: this.props.rating, 
             ratingAverages : this.props.starNums, 
-            commentObject : []
+            commentObject : [], 
+            user : this.props.user
         }
-        console.log("in block", this.state.bathroom[0].building); 
+        console.log("in block", this.state.bathroom[0].building);
+        console.log(this.props.user);  
+        this.deleteRatings = this.deleteRatings.bind(this);
     }
     createStars(averages, category){
         let stars =""; 
@@ -49,7 +52,27 @@ class Ratingblock extends Component {
             ); 
         }
     }
-    
+    determineDeleteShows(){
+        
+        let deleteDiv = []
+        if(this.state.user.admin == 1){
+        
+            deleteDiv.push(<div className = "" onClick = {this.deleteRatings}><i class="fa fa-trash" aria-hidden="true"></i></div>); 
+        }  
+        return(deleteDiv); 
+    }
+
+    deleteRatings(event){
+        alert("rating deleted"); 
+        let url = ("/ratings/" + this.state.rating.id); 
+
+        return fetch(url, {
+            method: 'delete'
+        })
+        .then(response => response.json())
+        .then(this.props.deleteClick());         
+    }
+ 
     
     render(){
         let value = (this.state.bathroom[0].building + " " + this.state.bathroom[0].room_num);
@@ -59,9 +82,10 @@ class Ratingblock extends Component {
                 <div className = "flexRow">
                     <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
                     <div class="flexColumn top_info">
-                        <p className= "top_value">user #</p>
+                        <p className= "top_value">{this.state.rating.user_approval}</p>
                         <p className= "top_value">{value}</p>
                     </div> 
+                    {this.determineDeleteShows()}
                 </div> 
                     {/* figure out how to get the stars in here conditionally */}
                 <div className = "flexRow spaceAround">

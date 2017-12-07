@@ -112,7 +112,7 @@ class Loginpage extends Component {
                 <p className = "loginMessage">{this.state.message}</p> 
                 <div className = "flexColumn">
                     <p className = "loginText">Username</p> 
-                    <input type="text" value={this.state.userName} onChange = {this.handleChange}></input> 
+                    <input type="text" class="usernameTextField" placeholder="Enter your username..." value={this.state.userName} onChange = {this.handleChange}></input> 
                 </div> 
                 <div className = "flexRow userAdminRow"> 
                     <div classname = "flexColumn userAdmin">
@@ -124,7 +124,7 @@ class Loginpage extends Component {
                         <input type="radio" name="Admin" checked={this.state.admin} onChange = {this.radioHandle.bind(this, 1)}></input>
                     </div>      
                 </div> 
-                <div className = "flexRow">
+                <div className = "flexRow userButtons">
                     <button type="submit">Login</button>
                     <button onClick={this.newUser.bind(this)}>New User</button>
                 </div> 

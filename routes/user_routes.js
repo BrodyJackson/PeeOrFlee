@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var comment_queries = require('../query_models/comment.js'); 
+var user_queries = require('../query_models/user.js'); 
 
 /* GET all bathrooms */
 router.get('/', function(req, res, next) {
-    comment_queries.getAllComments(function(err, rows){
+    user_queries.getAllUsers(function(err, rows){
         if (!err){
             res.json(rows); 
         }
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-    comment_queries.getCommentByRatingID(req.params.id, function(err, rows){
+    user_queries.getUserByID(req.params.id, function(err, rows){
         if (!err){
             res.json(rows);
             console.log("test");  
@@ -30,7 +30,7 @@ router.get('/:id', function(req, res, next) {
 
 
 router.post('/', function(req, res, next) {
-    comment_queries.addComment(req.body, function(err, rows) {
+    user_queries.addUser(req.body, function(err, rows) {
         if(!err){
             res.json(rows); 
         }
@@ -41,7 +41,7 @@ router.post('/', function(req, res, next) {
 }); 
 
 // router.put('/:id', function(req, res, next) {
-//     comment_queries.updateRating(req.params.id, req.body, function(err, rows) {
+//     user_queries.updateRating(req.params.id, req.body, function(err, rows) {
 //         if(!err){
 //             res.json(rows); 
 //         }
@@ -52,7 +52,7 @@ router.post('/', function(req, res, next) {
 // }); 
 
 router.delete('/:id', function(req, res, next) {
-    comment_queries.deleteComment(req.params.id, function(err, count) {
+    user_queries.deleteUser(req.params.id, function(err, count) {
         if (!err){
             res.json(count); 
         }

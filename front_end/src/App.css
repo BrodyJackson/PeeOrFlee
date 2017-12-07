@@ -330,3 +330,48 @@
 .yellowColor{
   color: gold; 
 }
+
+.newLoginContainer{
+  left: 0; 
+  right: 0; 
+  margin: 0 auto; 
+  width: 50%; 
+  top: 30%; 
+  z-index: 1006; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  position: absolute; 
+  /* Rectangle 9: */
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.50);
+  border-radius: 8px;
+}
+
+.userAdmin{
+  justify-content: flex-start; 
+}
+
+.userAdminRow{
+  width: 50%; 
+  margin: 0 auto; 
+  justify-content: space-around; 
+}
+
+.loginText{
+  /* Location: */
+  font-family: Lato-Light;
+  font-size: 28px;
+  color: #10AAAC;
+  margin: 0; 
+  padding: 0; 
+}
+
+.loginMessage {
+  font-family: Lato-Light;
+  font-size: 20px;
+  color: #247BA0;
+  margin: 0; 
+  padding: 0; 
+}

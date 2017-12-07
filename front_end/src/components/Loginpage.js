@@ -7,34 +7,88 @@ class Loginpage extends Component {
     constructor(props){
         super(props); 
         this.state = {
-            
+            users : [], 
+            userName : "", 
+            user: true, 
+            admin: false, 
+            message: null
             //this is where you will add the state for the form data which updates when form is changed
             //when you submit you access these values 
             //the comment one below is an example 
         
         }
         this.handleChange = this.handleChange.bind(this); 
+        this.radioHandle = this.radioHandle.bind(this); 
         this.close = this.close.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);  
     }
+
+    componentWillMount(){
+        fetch("/accounts")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data); 
+            this.setState({ users: data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
     
     handleSubmit(event) {
+        let foundResult = false; 
         event.preventDefault(); 
-        //form has been submitted, add the code which sends the values from the form that you have been saving in state to the put request for washroom
-        //follow the way that newRating does it
-
-        //call the close function once you submit the review, in order to close the page
-        this.close();  
-        //post the new review and exit 
+        for(let i = 0; i < this.state.users.length; i++){
+            if(this.state.userName == this.state.users[i].name){ 
+                this.props.userUpdate(this.state.users[i].name); 
+                foundResult = true; 
+            }
+        }
+        if(foundResult === false){
+            console.log("not found"); 
+            this.setState({message: "User Not found"});                
+        } 
+        else if(foundResult === true){
+            this.setState({message: "Logged In Successfully"}) ;            
+        }
     }
 
     handleChange(event){
     
-        this.setState({ })  
+        this.setState({userName:event.target.value })  
     }
         
          
-    
+    radioHandle(index, event){
+        if(index == 0){
+            let value = event.target.value; 
+            this.setState({user : true, admin: false}); 
+        }
+        else if(index == 1){
+            let value = event.target.value; 
+            this.setState({user : false, admin: true})
+        }
+    }
+
+    newUser(event){
+        event.preventDefault();
+        let timestamp = new Date().getUTCMilliseconds();
+        fetch("/accounts", {
+            method: "POST",
+            headers: {'Accept': 'application/json',
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              id: timestamp, 
+              name: this.state.userName, 
+              password: '123', 
+              admin: this.state.admin          
+            })
+          });     
+        alert("new user"); 
+        this.setState({message: "User Created"});                
+        
+        // this.close(); 
+    }
 
 
     close(event) {
@@ -46,11 +100,37 @@ class Loginpage extends Component {
     render(){  
 
         return (
-            //I just added a stubbed out form, you will add your own html structure to this, with varius fields for the new washroom 
-            //the input type submit is the submit button, and the button with classname cancel button will close the menu 
-             <div> 
-                
-            </div> 
+        <div className = "newLoginContainer"> 
+            <form onSubmit={this.handleSubmit.bind(this)}>
+                <div className = "infoRow close" onClick = {this.close}>
+                        <i className="fa fa-times" aria-hidden="true"></i>
+                </div>
+               
+                <div className = "flexRow">
+                    <h1 className = "title" >Login</h1> 
+                </div>
+                <p className = "loginMessage">{this.state.message}</p> 
+                <div className = "flexColumn">
+                    <p className = "loginText">Username</p> 
+                    <input type="text" value={this.state.userName} onChange = {this.handleChange}></input> 
+                </div> 
+                <div className = "flexRow userAdminRow"> 
+                    <div classname = "flexColumn userAdmin">
+                        <p className = "loginText">User</p> 
+                        <input type="radio" name="User" checked={this.state.user} onChange = {this.radioHandle.bind(this, 0)}></input>
+                    </div> 
+                    <div classname = "flexColumn userAdmin">
+                        <p className = "loginText">Admin</p>
+                        <input type="radio" name="Admin" checked={this.state.admin} onChange = {this.radioHandle.bind(this, 1)}></input>
+                    </div>      
+                </div> 
+                <div className = "flexRow">
+                    <button type="submit">Login</button>
+                    <button onClick={this.newUser.bind(this)}>New User</button>
+                </div> 
+               
+            </form>
+        </div> 
         );
      }
 }

@@ -24,7 +24,8 @@ class Header extends Component {
         this.closeLoginMenu = this.closeLoginMenu.bind(this); 
         this.newRating = this.newRating.bind(this); 
         this.resetRatingFlag = this.resetRatingFlag.bind(this); 
-        this.loginSignupRender = this.loginSignupRender.bind(this); 
+        this.loginSignupRender = this.loginSignupRender.bind(this);
+        this.loginSignup = this.loginSignup.bind(this);  
     }
 
     buttonClick(){
@@ -184,18 +185,24 @@ class Header extends Component {
 
     
     loginSignup(){
+        console.log("changing state"); 
         this.setState({loginSignupOpen : true}); 
     }
 
     loginSignupRender(){
+        console.log("in render")
         if(this.state.loginSignupOpen == true){
             return(
-                <Loginpage close = {this.closeLoginMenu()} ></Loginpage>
+               <Loginpage close = {this.closeLoginMenu} userUpdate = {((name) => this.updateUser(name))}></Loginpage>
             ); 
         }
        
     }
 
+    updateUser(user){
+        this.setState({user : user}); 
+        console.log(this.state.user); 
+    }
     closeLoginMenu(){
         this.setState({loginSignupOpen : false}); 
     }

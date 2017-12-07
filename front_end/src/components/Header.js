@@ -4,6 +4,8 @@ import Searchbar from './Searchbar.js';
 import Ratingblock from './Ratingblock.js';
 import Newrating from './Newrating.js';
 import Recentreviews from './Recentreviews.js'; 
+import Newwashroom from './Newwashroom.js';
+import Loginpage from './Loginpage.js';  
 
 class Header extends Component {
     constructor(props){
@@ -13,12 +15,16 @@ class Header extends Component {
             currentWashroomView: null, 
             currentRatings : [], 
             ratingFlag: false, 
-            rating: null 
+            rating: null, 
+            user: "Guest", 
+            loginSignupOpen: false
         }
         this.searchResultsClick = this.searchResultsClick.bind(this); 
         this.closeWashMenu = this.closeWashMenu.bind(this); 
+        this.closeLoginMenu = this.closeLoginMenu.bind(this); 
         this.newRating = this.newRating.bind(this); 
         this.resetRatingFlag = this.resetRatingFlag.bind(this); 
+        this.loginSignupRender = this.loginSignupRender.bind(this); 
     }
 
     buttonClick(){
@@ -85,7 +91,7 @@ class Header extends Component {
     createStars(averages, category){
         let stars =""; 
         for(let i = 0; i < averages[category]; i++){
-        stars = stars.concat("<i class='fa fa-star' aria-hidden='true'></i>"); 
+        stars = stars.concat("<i class='fa fa-star yellowColor' aria-hidden='true'></i>"); 
             
         }
         console.log(stars);
@@ -177,7 +183,22 @@ class Header extends Component {
     }
 
     
-    
+    loginSignup(){
+        this.setState({loginSignupOpen : true}); 
+    }
+
+    loginSignupRender(){
+        if(this.state.loginSignupOpen == true){
+            return(
+                <Loginpage close = {this.closeLoginMenu()} ></Loginpage>
+            ); 
+        }
+       
+    }
+
+    closeLoginMenu(){
+        this.setState({loginSignupOpen : false}); 
+    }
 
     render(){
         return (
@@ -187,13 +208,14 @@ class Header extends Component {
                     <div className="button_flex_container">
                         <button type="button" className = "newFacilityButton" onClick={this.buttonClick}> Add New Facility </button>
                         <button type="button" className = "viewBestButton" onClick={this.buttonClick}> View Best Facility's </button> 
-                        <button type="button" className = "viewRecentButton" onClick={this.buttonClick}> View Recent Ratings </button> 
+                        <button type="button" className = "viewRecentButton" onClick={this.loginSignup}> Login/Signup </button> 
                     </div>
                     <img className = "header_image" src = {require("../images/header.jpg")} alt=""></img> 
                     <img className = "uni_logo" src = {require("../images/uc_logo.png")} alt=""></img>  
                 </div>
                 {this.showWashroom()}
                 {this.checkNewRating()}
+                {this.loginSignupRender()}
                 
                 <Recentreviews></Recentreviews>
               

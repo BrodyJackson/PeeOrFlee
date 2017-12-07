@@ -17,7 +17,7 @@ class Ratingblock extends Component {
     createStars(averages, category){
         let stars =""; 
         for(let i = 0; i < averages[category]; i++){
-        stars = stars.concat("<i class='fa fa-star' aria-hidden='true'></i>"); 
+        stars = stars.concat("<i class='fa fa-star yellowColor' aria-hidden='true'></i>"); 
             
         }
         console.log(stars);

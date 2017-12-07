@@ -98,7 +98,7 @@ class Recentreviews extends Component {
         average = Math.round((average / 6)); 
         console.log(average);
         for(let i = 0; i < average; i++){
-            stars = stars.concat("<i class='fa fa-star' aria-hidden='true'></i>");         
+            stars = stars.concat("<i class='fa fa-star yellowColor' aria-hidden='true'></i>");         
         }
         console.log(stars);
         if(stars == ""){

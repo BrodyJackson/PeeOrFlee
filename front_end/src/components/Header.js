@@ -26,9 +26,11 @@ class Header extends Component {
             loginSignupOpen: false, 
             searchKey : 0, 
             searchFilter : {
-                open : "any", 
-                wheelchair: "any",  
-                gender: "any", 
+                open : "Any", 
+                wheelchair: "Any",  
+                gender: "Any",
+                urinals: "Any", 
+                feminine: "Any", 
             }, 
             filterOpen: false, 
             newWashOpen: false
@@ -309,12 +311,6 @@ class Header extends Component {
     closeNewWash(){
         this.setState({newWashOpen : false}); 
     }
-
-
-
-
-
-
 
 
     render(){

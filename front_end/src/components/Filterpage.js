@@ -7,7 +7,7 @@ class Filterpage extends Component {
     constructor(props){
         super(props); 
         this.state = {
-            filtering : this.props.values
+            filtering : this.props.values, 
             // users : [], 
             // userName : "", 
             // user: true, 
@@ -20,7 +20,10 @@ class Filterpage extends Component {
         }
         this.handleChange = this.handleChange.bind(this); 
         this.close = this.close.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);  
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.determineUrinals = this.determineUrinals.bind(this); 
+        
+
     }
 
    
@@ -36,14 +39,31 @@ class Filterpage extends Component {
         let currentValue = this.state.filtering;
         let stringValue = index;
         
-        currentValue[stringValue] = event.target.value
+        currentValue[stringValue] = event.target.value;
         console.log('newvalue', currentValue)
         this.setState({
             filtering : currentValue
-        })         
+        }) 
+             
     }
     
-
+    handleChangeDependant(index, event){
+        
+        let currentValue = this.state.filtering;
+        let stringValue = index;
+        console.log(event.target.value); 
+        if(event.target.value == "Any"){
+            currentValue.urinals = "Any"; 
+            currentValue.feminine = "Any"; 
+            console.log(currentValue); 
+        }
+        currentValue[stringValue] = event.target.value; 
+        console.log('newvalue', currentValue)
+        this.setState({
+            filtering : currentValue
+        }) 
+              
+    }
     
 
 
@@ -51,6 +71,34 @@ class Filterpage extends Component {
         console.log("test"); 
         //when you want this to be created when the button is clicked, then call the function in header which was passed in as a prop   
         this.props.close();  
+    }
+
+    determineUrinals(){
+        var urinalsDiv = []; 
+        if(this.state.filtering.gender == "Male"){
+            urinalsDiv.push(
+                <div className = "flexRow">
+                    <p className = "subTitle">Urinals</p>
+                    <select value={this.state.filtering.urinals} onChange={this.handleChange.bind(this, 'urinals')}>
+                        <option value="Any">Any</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>     
+                </div>
+            ) 
+        }
+        else if (this.state.filtering.gender == "Female") {
+            urinalsDiv.push(
+                <div className = "flexRow">
+                    <p className = "subTitle">Feminine Hygiene Products</p>
+                    <select value={this.state.filtering.feminine} onChange={this.handleChange.bind(this, 'feminine')}>
+                        <option value="Any">Any</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>     
+                </div>); 
+        }
+        return(urinalsDiv); 
     }
     
     render(){  
@@ -82,12 +130,13 @@ class Filterpage extends Component {
                 </div> 
                 <div className = "flexRow">
                 <p className = "loginText">Gender</p> 
-                <select value={this.state.filtering.gender} onChange={this.handleChange.bind(this, 'gender')}>
+                <select value={this.state.filtering.gender} onChange={this.handleChangeDependant.bind(this, 'gender')}>
                     <option value="Any">Any</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
-                </div>   
+                </div> 
+                {this.determineUrinals()}  
                 <div className = "flexRow">
                     <button onClick={this.handleSubmit}>Done</button>
                 </div> 

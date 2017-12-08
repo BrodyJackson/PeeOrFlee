@@ -9,7 +9,9 @@ class Searchbar extends Component {
             allBathrooms: [], 
             inCurrentSearch: [], 
             searchValue : "", 
-            filtering : this.props.filtering
+            filtering : this.props.filtering, 
+            males : [], 
+            females : []
         }; 
     }
 
@@ -20,6 +22,27 @@ class Searchbar extends Component {
         .then((data) => {
             console.log(data); 
             this.setState({ allBathrooms : data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+        
+        fetch("/males")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data); 
+            this.setState({ males : data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+ 
+        fetch("/females")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data); 
+            this.setState({ females: data });
         })
         .catch((error) => {
           console.error(error);
@@ -47,6 +70,32 @@ class Searchbar extends Component {
             }
             if((filtering.wheelchair == "Yes" && this.state.allBathrooms[i].wheelchair == 0) || (filtering.wheelchair == "No" && this.state.allBathrooms[i].wheelchair == 1)){
                 continue;
+            }
+            let maleMatch = false; 
+            let femaleMatch = false;
+            let urinals = 0; 
+            let feminine = 0; 
+            console.log(this.state.allBathrooms[i].id, "bathroom id"); 
+            console.log(this.state.males); 
+            for(let j = 0; j < this.state.males.length; j ++){
+                if(this.state.males[j].id == this.state.allBathrooms[i].id){
+                    maleMatch = true;
+                    urinals = this.state.males[j].urinals
+                    console.log(urinals, "urinals"); 
+                }
+            }
+            for(let j = 0; j < this.state.females.length; j ++){
+                if(this.state.females[j].id == this.state.allBathrooms[i].id){
+                    femaleMatch = true;
+                    feminine = this.state.females[j].feminine
+                    console.log(feminine, "feminine"); 
+                }
+            }
+            if((filtering.gender == "Male" && maleMatch == false) || (filtering.gender == "Female" && femaleMatch == false)){
+                continue; 
+            }
+            if((filtering.urinals == "Yes" && urinals == 0) || filtering.feminine == "Yes" && feminine == 0){
+                continue; 
             }
             else{
                 results.push(this.state.allBathrooms[i]); 

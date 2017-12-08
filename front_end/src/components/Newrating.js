@@ -175,11 +175,11 @@ class Newrating extends Component {
                         
                         </div> 
                     </div>
-                    <textarea value = {this.state.comment} onChange = {this.handleChange.bind(this, 'comment')}> 
-                    </textarea> 
-                    <input type="submit" value="Submit" />
+                    <div class="commentBox"><textarea class="commentField" value = {this.state.comment} placeholder="Enter an optional..." onChange = {this.handleChange.bind(this, 'comment')}> 
+                    </textarea> </div>
+                    <div><input type="submit" value="Submit" /></div>
                 </form>
-                <button type="button" className = "cancelButton" onClick={this.close}>Discard</button>
+                <button type="button" className = "ratingButton cancelButton" onClick={this.close}>Discard</button>
             </div> 
         );
      }

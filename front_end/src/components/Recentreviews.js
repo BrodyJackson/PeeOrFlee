@@ -16,7 +16,6 @@ class Recentreviews extends Component {
     
 
     componentDidMount(){
-    
         console.log("comments recieved"); 
         fetch("/comments")
         .then((response) => response.json())
@@ -52,7 +51,6 @@ class Recentreviews extends Component {
     }
 
     
-
     determineNewestDate(){
         let object = this.state.allComments; 
         console.log(object, 'object');

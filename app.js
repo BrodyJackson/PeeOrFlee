@@ -17,6 +17,8 @@ var bathroom_routes = require('./routes/bathroom_routes');
 var rating_routes = require('./routes/rating_routes'); 
 var comment_routes = require('./routes/comment_routes'); 
 var user_routes = require('./routes/user_routes'); 
+var male_routes = require('./routes/male_routes'); 
+var female_routes = require('./routes/female_routes'); 
 
 
 //define app as an express app, we will make it use certain routes ect...
@@ -39,7 +41,8 @@ app.use('/bathrooms',bathroom_routes);
 app.use('/ratings', rating_routes);
 app.use('/comments', comment_routes); 
 app.use('/accounts', user_routes);   //the account url is what accesses the users in the database
-
+app.use('/males', male_routes);
+app.use('/females', female_routes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

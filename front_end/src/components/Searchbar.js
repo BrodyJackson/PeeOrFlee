@@ -8,7 +8,8 @@ class Searchbar extends Component {
         this.state = {
             allBathrooms: [], 
             inCurrentSearch: [], 
-            searchValue : ""
+            searchValue : "", 
+            filtering : this.props.filtering
         }; 
     }
 
@@ -32,6 +33,7 @@ class Searchbar extends Component {
     }
 
     determineResults(){
+        let filtering = this.state.filtering; 
         var results = []; 
         console.log("in here"); 
         console.log(this.state.allBathrooms); 
@@ -39,6 +41,12 @@ class Searchbar extends Component {
             let searchText = this.state.allBathrooms[i].building; 
             if(searchText.substring(0, this.state.searchValue.length).toLowerCase() !== this.state.searchValue.toLowerCase() && this.state.searchValue.trim() !== ""){
                 continue; 
+            }
+            if((filtering.open == "Open" && this.state.allBathrooms[i].open == 0) || (filtering.open == "Closed" && this.state.allBathrooms[i].open == 1)){
+                continue;
+            }
+            if((filtering.wheelchair == "Yes" && this.state.allBathrooms[i].wheelchair == 0) || (filtering.wheelchair == "No" && this.state.allBathrooms[i].wheelchair == 1)){
+                continue;
             }
             else{
                 results.push(this.state.allBathrooms[i]); 

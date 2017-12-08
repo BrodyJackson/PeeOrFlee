@@ -6,6 +6,7 @@ import Newrating from './Newrating.js';
 import Recentreviews from './Recentreviews.js'; 
 import Newwashroom from './Newwashroom.js';
 import Loginpage from './Loginpage.js';  
+import Filterpage from './Filterpage.js'; 
 
 class Header extends Component {
     constructor(props){
@@ -23,7 +24,14 @@ class Header extends Component {
                 admin: false,
             }, 
             loginSignupOpen: false, 
-            searchKey : 0
+            searchKey : 0, 
+            searchFilter : {
+                open : "any", 
+                wheelchair: "any",  
+                gender: "any", 
+            }, 
+            filterOpen: false, 
+            newWashOpen: false
         }
         this.searchResultsClick = this.searchResultsClick.bind(this); 
         this.closeWashMenu = this.closeWashMenu.bind(this); 
@@ -33,7 +41,14 @@ class Header extends Component {
         this.loginSignupRender = this.loginSignupRender.bind(this);
         this.loginSignup = this.loginSignup.bind(this); 
         this.deleteWashroom = this.deleteWashroom.bind(this);
-        this.forceRefresh = this.forceRefresh.bind(this);  
+        this.forceRefresh = this.forceRefresh.bind(this);
+        this.openFilterMenu= this.openFilterMenu.bind(this);
+        this.closeFilterMenu = this.closeFilterMenu.bind(this);
+        this.filterRender = this.filterRender.bind(this); 
+        this.updateFilter = this.updateFilter.bind(this);  
+        this.openNewWashMenu = this.openNewWashMenu.bind(this); 
+        this.closeNewWash = this.closeNewWash.bind(this); 
+        this.washRender = this.washRender.bind(this); 
     }
 
     buttonClick(){
@@ -235,18 +250,81 @@ class Header extends Component {
         this.setState({user : userObject }); 
         console.log(this.state.user); 
     }
+
     closeLoginMenu(){
         this.setState({loginSignupOpen : false}); 
     }
+
+
+    openFilterMenu(){
+        console.log("changing state for filter"); 
+        this.setState({filterOpen: true}); 
+    }
+
+    filterRender(){
+        console.log("in render for filter")
+        if(this.state.filterOpen == true){
+            return(
+               <Filterpage values = {this.state.searchFilter} close = {this.closeFilterMenu} filterUpdate = {((filtering) => this.updateFilter(filtering))}></Filterpage>
+            ); 
+        }
+       
+    }
+
+    updateFilter(filterOptions){
+        let newSearchKey = (this.state.searchKey + 1);
+        this.setState({ searchFilter : filterOptions, searchKey : newSearchKey }); 
+        console.log(this.state.searchFilter, "asdfasdfas"); 
+    }
+
+    closeFilterMenu(){
+        this.setState({filterOpen : false}); 
+    }
+
+
+
+
+
+    openNewWashMenu(){
+        console.log("changing state for washroom"); 
+        this.setState({newWashOpen: true}); 
+    }
+
+    washRender(){
+        console.log("in render for filter")
+        if(this.state.newWashOpen == true){
+            return(
+               <Newwashroom close = {this.closeNewWash} filterUpdate = {((filtering) => this.updateFilter(filtering))}></Newwashroom>
+            ); 
+        }
+       
+    }
+
+    updateFilter(filterOptions){
+        let newSearchKey = (this.state.searchKey + 1);
+        this.setState({ searchFilter : filterOptions, searchKey : newSearchKey }); 
+        console.log(this.state.searchFilter, "asdfasdfas"); 
+    }
+
+    closeNewWash(){
+        this.setState({newWashOpen : false}); 
+    }
+
+
+
+
+
+
+
 
     render(){
         return (
             <div> 
                 <div className="header">
-                    <Searchbar key = {this.state.searchKey} click = {((message) => this.searchResultsClick(message))}></Searchbar>
+                    <Searchbar key = {this.state.searchKey} click = {((message) => this.searchResultsClick(message))} filtering = {this.state.searchFilter}></Searchbar>
                     <div className="button_flex_container">
-                        <button type="button" className = "newFacilityButton" onClick={this.buttonClick}> Add New Facility </button>
-                        <button type="button" className = "viewBestButton" onClick={this.buttonClick}> View Best Facility's </button> 
+                        <button type="button" className = "newFacilityButton" onClick={this.openNewWashMenu}> Add New Facility </button>
+                        <button type="button" className = "viewBestButton" onClick={this.openFilterMenu}> Filter Options </button> 
                         <button type="button" className = "viewRecentButton" onClick={this.loginSignup}> Login/Signup </button> 
                     </div>
                     <img className = "header_image" src = {require("../images/header.jpg")} alt=""></img> 
@@ -255,6 +333,8 @@ class Header extends Component {
                 {this.showWashroom()}
                 {this.checkNewRating()}
                 {this.loginSignupRender()}
+                {this.filterRender()}
+                {this.washRender()}
                 
                 <Recentreviews></Recentreviews>
               

@@ -134,7 +134,10 @@ class Newwashroom extends Component {
     
     render(){  
         return (
-            <div className = "newWashContainer"> 
+        <div className = "newWashContainer"> 
+            <div className = "infoRow close" onClick = {this.close}>
+                        <i className="fa fa-times" aria-hidden="true"></i>
+            </div>
             <div className = "infoRow">
                 <h1 className = "title" >New Washroom</h1> 
             </div>
@@ -187,7 +190,6 @@ class Newwashroom extends Component {
                 </div>
                 <input type="submit" value="Submit" />
             </form>
-            <button type="button" className = "cancelButton" onClick={this.close}>Discard</button>
         </div> 
         );
      }

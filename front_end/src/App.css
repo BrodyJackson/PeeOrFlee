@@ -221,9 +221,14 @@
   font-size: 28px; 
 }
 
+.fa-trash{
+  justify-content: flex-end;
+}
+
 .close{
   justify-content: flex-end; 
   margin: 1% 1% 0 0; 
+  display: grid;
 }
 
 

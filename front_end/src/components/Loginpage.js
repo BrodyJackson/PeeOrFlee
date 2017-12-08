@@ -122,9 +122,9 @@ class Loginpage extends Component {
                         <input type="radio" name="Admin" checked={this.state.admin} onChange = {this.radioHandle.bind(this, 1)}></input>
                     </div>      
                 </div> 
-                <div className = "flexRow userButtons">
-                    <button type="submit">Login</button>
-                    <button onClick={this.newUser.bind(this)}>New User</button>
+                <div className = "flexRow" class="buttonContainer">
+                    <button type="submit" class="userButtons buttonContainer" >Login</button>
+                    <button class="userButtons buttonContainer" onClick={this.newUser.bind(this)}>New User</button>
                 </div> 
                
             </form>

@@ -337,7 +337,6 @@
 }
 
 .recentReviewsContainer{
-  height: 400px; 
   /* Rectangle 3: */
   background: #F5F5F5;
 }
@@ -403,11 +402,20 @@
   justify-content: space-around; 
 }
 
+.buttonContainer{
+margin: 1rem;
+}
+
 .userButtons{
-    justify-content: space-around;
-    margin: 1rem;
-    padding-left: 20%;
-    padding-right: 20%;
+    background-color: gold;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 9rem;
 }
 
 .loginText{

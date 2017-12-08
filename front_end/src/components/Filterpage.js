@@ -138,7 +138,7 @@ class Filterpage extends Component {
                 </div> 
                 {this.determineUrinals()}  
                 <div className = "flexRow filterCriteria">
-                    <button class="userButtons" onClick={this.handleSubmit}>Done</button>
+                    <button class="userButtons buttonContainer" onClick={this.handleSubmit}>Done</button>
                 </div> 
                
             </form>

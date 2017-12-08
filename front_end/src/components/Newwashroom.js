@@ -145,15 +145,15 @@ class Newwashroom extends Component {
                 <div className = "infoRow">
                     <div className = "category" class="category">
                         <p className = "subTitle">Location</p>
-                        <input type="text" value={this.state.values.building} onChange = {this.handleChange.bind(this, 'building')}></input>  
+                        <input type="text" value={this.state.values.building} placeholder="" onChange = {this.handleChange.bind(this, 'building')}></input>  
                     </div>
                     <div className = "category" class="category">
                         <p className = "subTitle">Room Number</p>
-                        <input type="text" value={this.state.values.roomNum} onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
+                        <input type="text" value={this.state.values.roomNum} placeholder="" onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
                     </div> 
                     <div className = "category" class="category">
                         <p className = "subTitle">Stall Number</p>
-                        <input type="text" value={this.state.values.stallNum} onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
+                        <input type="text" value={this.state.values.stallNum} placeholder="??" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
                     </div>
                 </div>
                 <div className = "infoRow">  
@@ -191,7 +191,7 @@ class Newwashroom extends Component {
 
                     
                 </div>
-                <input class="userButtons" type="submit" value="Submit" />
+                <input class="userButtons buttonContainer" type="submit" value="Submit" />
             </form>
         </div> 
         );

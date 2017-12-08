@@ -203,7 +203,7 @@ class Header extends Component {
                         {this.renderAllRatings(ratingAverages)}
                     </div>  
                     <div classNae = "newRatingButtonContainer">
-                        <button type="button" className = "newRatingButton" onClick={this.newRating}> New Rating </button>
+                        <button type="button" className = "ratingButton" onClick={this.newRating}> New Rating </button>
                     </div>  
                 </div>
             )

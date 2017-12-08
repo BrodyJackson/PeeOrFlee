@@ -89,29 +89,29 @@ class Ratingblock extends Component {
                 </div> 
                     {/* figure out how to get the stars in here conditionally */}
                 <div className = "flexRow spaceAround">
-                    <div className = "categoryContainer">
+                    <div className = "categoryContainer" class="category">
                         <p className = "smallRatingCategory">Location</p> 
                         {this.createStars(this.state.ratingAverages, 0)}
                     </div> 
-                    <div className = "categoryContainer">
+                    <div className = "categoryContainer" class="category">
                         <p className = "smallRatingCategory">Smell</p> 
                         {this.createStars(this.state.ratingAverages, 1)}
                     </div> 
-                    <div className = "categoryContainer">
+                    <div className = "categoryContainer" class="category">
                         <p className = "smallRatingCategory">Cleanliness</p> 
                         {this.createStars(this.state.ratingAverages, 2)}
                     </div> 
                 </div>
                 <div className = "flexRow spaceAround">
-                    <div className = "categoryContainer">
+                    <div className = "categoryContainer" class="category">
                         <p className = "smallRatingCategory">Maintanence</p> 
                         {this.createStars(this.state.ratingAverages, 3)}
                     </div> 
-                    <div className = "categoryContainer">
+                    <div className = "categoryContainer" class="category">
                         <p className = "smallRatingCategory">Wait Time</p> 
                         {this.createStars(this.state.ratingAverages, 4)}
                     </div> 
-                    <div className = "categoryContainer">
+                    <div className = "categoryContainer" class="category">
                         <p className = "smallRatingCategory">Privacy</p> 
                         {this.createStars(this.state.ratingAverages, 5)}
                     </div> 

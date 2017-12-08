@@ -57,7 +57,7 @@ class Ratingblock extends Component {
         let deleteDiv = []
         if(this.state.user.admin == 1){
         
-            deleteDiv.push(<div className = "" onClick = {this.deleteRatings}><i class="fa fa-trash" aria-hidden="true"></i></div>); 
+            deleteDiv.push(<div className = "" onClick = {this.deleteRatings}><i class="fa fa-trash trashMargin" aria-hidden="true"></i></div>); 
         }  
         return(deleteDiv); 
     }
@@ -79,9 +79,9 @@ class Ratingblock extends Component {
         console.log('value', value);   
         return (
             <div className = "ratingBox"> 
-                <div className = "flexRow">
+                <div className = "flexRow justify-around">
                     <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
-                    <div class="flexColumn top_info">
+                    <div class="flexColumn top_info marginToRight">
                         <p className= "top_value">{this.state.rating.user_approval}</p>
                         <p className= "top_value">{value}</p>
                     </div> 

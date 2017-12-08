@@ -463,3 +463,15 @@
   border-radius: 8px;
 
 }
+
+.justify-around{
+  justify-content: space-around; 
+}
+
+.marginToRight{
+  margin: 3.5% 70% 0 0;
+}
+
+.trashMargin{
+  margin: 0 10% 0 0; 
+}

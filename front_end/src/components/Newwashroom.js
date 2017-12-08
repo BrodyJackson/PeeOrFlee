@@ -110,7 +110,7 @@ class Newwashroom extends Component {
         var urinalsDiv = []; 
         if(this.state.values.gender == 1){
             urinalsDiv.push(
-                <div className = "category">
+                <div className = "category" class="categoryHalf">
                     <p className = "subTitle">Urinals</p>
                     <select value={this.state.values.urinals} onChange={this.handleChange.bind(this, 'urinals')}>
                         <option value="1">Yes</option>
@@ -121,7 +121,7 @@ class Newwashroom extends Component {
         }
         else{
             urinalsDiv.push(
-                <div className = "category">
+                <div className = "category" class="categoryHalf">
                     <p className = "subTitle">Feminine Hygiene Products</p>
                     <select value={this.state.values.feminine} onChange={this.handleChange.bind(this, 'feminine')}>
                         <option value="1">Yes</option>

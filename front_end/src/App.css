@@ -30,6 +30,10 @@
   to { transform: rotate(360deg); }
 }
 
+.gender{
+  width: 50% !important;
+}
+
 
 .header{
   position: relative; 

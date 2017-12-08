@@ -143,28 +143,28 @@ class Newwashroom extends Component {
             </div>
             <form onSubmit = {this.handleSubmit}>
                 <div className = "infoRow">
-                    <div className = "category">
+                    <div className = "category" class="category">
                         <p className = "subTitle">Location</p>
                         <input type="text" value={this.state.values.building} onChange = {this.handleChange.bind(this, 'building')}></input>  
                     </div>
-                    <div className = "category">
+                    <div className = "category" class="category">
                         <p className = "subTitle">Room Number</p>
                         <input type="text" value={this.state.values.roomNum} onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
                     </div> 
-                    <div className = "category">
+                    <div className = "category" class="category">
                         <p className = "subTitle">Stall Number</p>
                         <input type="text" value={this.state.values.stallNum} onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
                     </div>
                 </div>
                 <div className = "infoRow">  
-                    <div className = "category">
+                    <div className = "category" class="categoryHalf">
                         <p className = "subTitle">Open</p>
                         <select value={this.state.values.open} onChange={this.handleChange.bind(this, 'open')}>
                             <option value="1">Open</option>
                             <option value="0">Closed</option>
                         </select>     
                     </div> 
-                    <div className = "category">
+                    <div className = "category" class="categoryHalf">
                         <p className = "subTitle">WheelChair Accessible</p>
                         <select value={this.state.values.wheelchair} onChange={this.handleChange.bind(this, 'wheelchair')}>
                             <option value="1">Yes</option>
@@ -173,7 +173,7 @@ class Newwashroom extends Component {
                     </div> 
                 </div> 
                 <div className = "infoRow"> 
-                    <div className = "category">
+                    <div className = "category" class="categoryHalf">
                         <p className = "subTitle">Gender</p>
                         <select value={this.state.values.gender} onChange={this.handleChange.bind(this, 'gender')}>
                             <option value="1">Male</option>
@@ -185,10 +185,13 @@ class Newwashroom extends Component {
                 <div className = "infoRow">
                     <div className = "category">
                         <p className = "subTitle">Comments</p>
-                        <textarea value = {this.state.comment} onChange = {this.handleChange.bind(this, 'comment')}> </textarea> 
-                    </div>
+                       </div></div>
+                <div className = "infoRow">
+<div class="commentBox2"><textarea value = {this.state.comment} class="commentField" placeholder="Enter an optional comment..." onChange = {this.handleChange.bind(this, 'comment')}></textarea></div>
+
+                    
                 </div>
-                <input type="submit" value="Submit" />
+                <input class="userButtons" type="submit" value="Submit" />
             </form>
         </div> 
         );

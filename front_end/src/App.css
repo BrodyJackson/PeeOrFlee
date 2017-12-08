@@ -266,6 +266,10 @@
   width: 33%;
 }
 
+.categoryHalf{
+  width:45%;
+}
+
 .spaceAround {
   justify-content: space-around; 
   margin-top: -2rem;
@@ -312,6 +316,14 @@
 
 .commentBox{
   padding: 2rem;
+  margin: auto;
+  width: 80%;
+}
+
+.commentBox2{
+  padding: 0.1rem;
+  margin: auto;
+  width: 80%;
 }
 
 .commentField{
@@ -425,6 +437,11 @@
   border: 1px solid #979797;
   box-shadow: 0 0 4px 1px rgba(0,0,0,0.50);
   border-radius: 8px;
+}
+
+.filterCriteria {
+    display: block;
+    justify-content: center;
 }
 
 .newWashContainer{

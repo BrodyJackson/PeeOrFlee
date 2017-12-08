@@ -77,7 +77,7 @@ class Filterpage extends Component {
         var urinalsDiv = []; 
         if(this.state.filtering.gender == "Male"){
             urinalsDiv.push(
-                <div className = "flexRow">
+                <div className = "flexRow filterCriteria">
                     <p className = "subTitle">Urinals</p>
                     <select value={this.state.filtering.urinals} onChange={this.handleChange.bind(this, 'urinals')}>
                         <option value="Any">Any</option>
@@ -89,7 +89,7 @@ class Filterpage extends Component {
         }
         else if (this.state.filtering.gender == "Female") {
             urinalsDiv.push(
-                <div className = "flexRow">
+                <div className = "flexRow filterCriteria">
                     <p className = "subTitle">Feminine Hygiene Products</p>
                     <select value={this.state.filtering.feminine} onChange={this.handleChange.bind(this, 'feminine')}>
                         <option value="Any">Any</option>
@@ -112,7 +112,7 @@ class Filterpage extends Component {
                 <div className = "flexRow">
                     <h1 className = "title" >Filter Options</h1> 
                 </div>
-                <div className = "flexRow">
+                <div className = "flexRow filterCriteria">
                     <p className = "loginText">Open/Closed</p> 
                     <select value={this.state.filtering.open} onChange={this.handleChange.bind(this, 'open')}>
                         <option value="Any">Any</option>
@@ -120,7 +120,7 @@ class Filterpage extends Component {
                         <option value="Closed">Closed</option>
                     </select>
                 </div> 
-                <div className = "flexRow">
+                <div className = "flexRow filterCriteria">
                 <p className = "loginText">WheelChair Accessability</p> 
                 <select value={this.state.filtering.wheelchair} onChange={this.handleChange.bind(this, 'wheelchair')}>
                     <option value="Any">Any</option>
@@ -128,7 +128,7 @@ class Filterpage extends Component {
                     <option value="No">No</option>
                 </select>
                 </div> 
-                <div className = "flexRow">
+                <div className = "flexRow filterCriteria">
                 <p className = "loginText">Gender</p> 
                 <select value={this.state.filtering.gender} onChange={this.handleChangeDependant.bind(this, 'gender')}>
                     <option value="Any">Any</option>
@@ -137,8 +137,8 @@ class Filterpage extends Component {
                 </select>
                 </div> 
                 {this.determineUrinals()}  
-                <div className = "flexRow">
-                    <button onClick={this.handleSubmit}>Done</button>
+                <div className = "flexRow filterCriteria">
+                    <button class="userButtons" onClick={this.handleSubmit}>Done</button>
                 </div> 
                
             </form>

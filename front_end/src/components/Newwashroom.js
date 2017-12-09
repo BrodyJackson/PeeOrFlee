@@ -7,20 +7,11 @@ class Newwashroom extends Component {
     constructor(props){
         super(props); 
         this.state = {
-            
-            //this is where you will add the state for the form data which updates when form is changed
-            //when you submit you access these values 
-            //the comment one below is an example 
+            comment: "",
             values : {
-<<<<<<< HEAD
                 building : "", 
-                rooomNum : "", 
-                stallNum : "", 
-=======
-                building : "MSC", 
-                roomNum : "123", 
+                roomNum : "", 
                 stallNum : "0", 
->>>>>>> e19c5e629c77567fe63c5b318db3c02efd0f31f3
                 open: "1", 
                 wheelchair : "0", 
                 gender : "0", 
@@ -33,7 +24,8 @@ class Newwashroom extends Component {
         this.handleChange = this.handleChange.bind(this); 
         this.close = this.close.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);  
-        this.determineUrinals = this.determineUrinals.bind(this); 
+        this.determineUrinals = this.determineUrinals.bind(this);
+        this.handleComment = this.handleComment.bind(this);  
     }
     
 
@@ -47,12 +39,11 @@ class Newwashroom extends Component {
             body: JSON.stringify({
                 id: timestamp,
                 stall_num : this.state.values.stallNum,  
-                description: this.state.values.comments,
+                description: this.state.comment,
                 open: this.state.values.open,
                 wheelchair: this.state.values.wheelchair, //value is hardcoded, we aren't doing anything with this
                 building: this.state.values.building, //value is hardcoded, we aren't doing anything with this
-                room_num: this.state.values.rooomNum,
-                comment: this.state.values.comment 
+                room_num: this.state.values.roomNum,
             })
             });
 
@@ -87,8 +78,9 @@ class Newwashroom extends Component {
     } 
     
 
-    handleChange(event){
-    
+    handleComment(event){
+        console.log("INEVENT"); 
+        event.preventDefault();
         this.setState({comment : event.target.value })  
     }
         
@@ -152,6 +144,7 @@ class Newwashroom extends Component {
                 <div className = "infoRow">
                     <div className = "category" class="category">
                         <p className = "subTitle">Location</p>
+<<<<<<< HEAD
                         <input type="text" value={this.state.values.building} placeholder="Building Code" onChange = {this.handleChange.bind(this, 'building')}></input>  
                     </div>
                     <div className = "category" class="category">
@@ -161,6 +154,17 @@ class Newwashroom extends Component {
                     <div className = "category" class="category">
                         <p className = "subTitle">Stall Number</p>
                         <input type="text" value={this.state.values.stallNum} placeholder="Number of Stalls" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
+=======
+                        <input type="text" value={this.state.values.building} placeholder="Exp. MSC" onChange = {this.handleChange.bind(this, 'building')}></input>  
+                    </div>
+                    <div className = "category" class="category">
+                        <p className = "subTitle">Room Number</p>
+                        <input type="text" value={this.state.values.roomNum} placeholder="Exp. 123" onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
+                    </div> 
+                    <div className = "category" class="category">
+                        <p className = "subTitle">Stall Number</p>
+                        <input type="text" value={this.state.values.stallNum} placeholder="Exp. 1" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
+>>>>>>> refs/remotes/origin/merge-branch
                     </div>
                 </div>
                 <div className = "infoRow">  
@@ -195,7 +199,7 @@ class Newwashroom extends Component {
                         <p className = "subTitle">Comments</p>
                        </div></div>
                 <div className = "infoRow">
-                <div class="commentBox2"><textarea value = {this.state.comment} class="commentField" placeholder="Enter an optional comment..." onChange = {this.handleChange.bind(this, 'comment')}></textarea></div>
+                <div class="commentBox2"><textarea value = {this.state.comment} class="commentField" placeholder="Enter an optional comment..." onChange = {this.handleComment}></textarea></div>
 
                     
                 </div>

@@ -253,8 +253,7 @@
 .allRatingsContainer{
   display: flex; 
   flex-direction: column;
-  justify-content: space-around; 
-  margin-top: 3%; 
+  justify-content: space-around;  
 }
 .flexRow{
   display: flex; 
@@ -313,6 +312,9 @@
   border: 1px solid #979797;
   box-shadow: 0 0 4px 1px rgba(0,0,0,0.50);
   border-radius: 8px;
+}
+.newRatingButtonContainer{
+  margin-top: 3%;
 }
 
 .ratingButton{
@@ -408,15 +410,15 @@ margin: 1rem;
 }
 
 .userButtons{
-    background-color: gold;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 9rem;
+  background-color: #FED766;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 9rem;
 }
 
 .styled-select {

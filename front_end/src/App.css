@@ -280,7 +280,8 @@
 .fa-user-circle{
   font-size: 45px;
   margin: 1rem; 
-  color: #10AAAC;
+  color: #247BA0;
+  padding-top: 1%; 
 }
 
 .top_info{
@@ -360,6 +361,7 @@
   font-family: Lato-Regular;
   font-size: 55px;
   color: #247BA0;
+  margin: 2% 0 0 0;
 }
 
 .yellowColor{
@@ -475,4 +477,46 @@
 
 .trashMargin{
   margin: 0 10% 0 0; 
+}
+
+.fa-check-square{
+  color: #10AAAC;
+}
+
+.fa-window-close{
+  color: red;
+}
+
+.fa-male{
+  color: blue; 
+}
+.fa-female{
+  color: pink; 
+}
+
+.commentDiv{
+  /* "Lorem ipsum dolor s: */
+  font-family: Lato-Regular;
+  font-size: 18px;
+  color: #247BA0;
+}
+
+.top_value:first-of-type{
+  /* User 1: */
+  font-family: Lato-Regular;
+  font-size: 20px;
+  color: #247BA0;
+}
+.top_value:last-of-type{
+  /* ICT 123: */
+  font-family: Lato-Regular;
+  font-size: 24px;
+  color: #247BA0;
+}
+
+.randomContainer{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 8% 13% 0 0 ; 
 }

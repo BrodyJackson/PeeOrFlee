@@ -7,6 +7,7 @@ import Recentreviews from './Recentreviews.js';
 import Newwashroom from './Newwashroom.js';
 import Loginpage from './Loginpage.js';  
 import Filterpage from './Filterpage.js'; 
+import Washroominfoview from './Washroominfoview.js';
 
 class Header extends Component {
     constructor(props){
@@ -33,7 +34,9 @@ class Header extends Component {
                 feminine: "Any", 
             }, 
             filterOpen: false, 
-            newWashOpen: false
+            newWashOpen: false, 
+            males: [], 
+            females: []
         }
         this.searchResultsClick = this.searchResultsClick.bind(this); 
         this.closeWashMenu = this.closeWashMenu.bind(this); 
@@ -79,6 +82,26 @@ class Header extends Component {
             .then((data) => {
                 console.log(data, "rating retrieved"); 
                 this.setState({ currentRatings : data });
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+
+            fetch("/males")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data); 
+                this.setState({ males : data });
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+     
+            fetch("/females")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data); 
+                this.setState({ females: data });
             })
             .catch((error) => {
               console.error(error);
@@ -153,7 +176,12 @@ class Header extends Component {
         .then(this.setState({searchKey : newSearchKey})); 
         //add the code which will actually delete the washroom
     }
-    //render the washroom info 
+    //render the washroom info
+    
+    
+
+
+    
     showWashroom() {
         if(this.state.currentWashroomView !== null){
             let ratingAverages = this.determineRatingAverages(); 
@@ -173,6 +201,9 @@ class Header extends Component {
                     <div className = "infoRow">
                         <h1 className = "title" >{title}</h1> 
                     </div>
+                
+                    <Washroominfoview currentWashroomView = {this.state.currentWashroomView} males = {this.state.males} females = {this.state.females}></Washroominfoview> 
+                 
                     <div className = "infoRow">
                         <div className = "category">
                             <p className = "subTitle">Location</p> 

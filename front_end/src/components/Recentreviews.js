@@ -118,10 +118,11 @@ class Recentreviews extends Component {
                     <p className= "top_value">user #</p>
                     <p className= "top_value">{this.getBathroomName(rating)}</p>
                 </div> 
-                </div>
-                <div className = "categoryContainer"> 
+                <div className = "randomContainer"> 
                     {this.createStars(rating)}
                 </div>
+                </div>
+                
                 <div className = "commentDiv">
                     {this.determineComment(rating)} 
                 </div>  

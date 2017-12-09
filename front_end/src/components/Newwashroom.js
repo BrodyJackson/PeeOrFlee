@@ -110,9 +110,9 @@ class Newwashroom extends Component {
         var urinalsDiv = []; 
         if(this.state.values.gender == 1){
             urinalsDiv.push(
-                <div className = "category">
+                <div className = "category" class="categoryHalf">
                     <p className = "subTitle">Urinals</p>
-                    <select value={this.state.values.urinals} onChange={this.handleChange.bind(this, 'urinals')}>
+                    <select value={this.state.values.urinals} onChange={this.handleChange.bind(this, 'urinals')} class="styled-select teal rounded">
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                     </select>     
@@ -121,9 +121,9 @@ class Newwashroom extends Component {
         }
         else{
             urinalsDiv.push(
-                <div className = "category">
+                <div className = "category" class="categoryHalf">
                     <p className = "subTitle">Feminine Hygiene Products</p>
-                    <select value={this.state.values.feminine} onChange={this.handleChange.bind(this, 'feminine')}>
+                    <select value={this.state.values.feminine} onChange={this.handleChange.bind(this, 'feminine')} class="styled-select teal rounded">
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                     </select>     
@@ -145,41 +145,42 @@ class Newwashroom extends Component {
                 <div className = "infoRow">
                     <div className = "category" class="category">
                         <p className = "subTitle">Location</p>
-                        <input type="text" value={this.state.values.building} onChange = {this.handleChange.bind(this, 'building')}></input>  
+                        <input type="text" value={this.state.values.building} placeholder="" onChange = {this.handleChange.bind(this, 'building')}></input>  
                     </div>
                     <div className = "category" class="category">
                         <p className = "subTitle">Room Number</p>
-                        <input type="text" value={this.state.values.roomNum} onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
+                        <input type="text" value={this.state.values.roomNum} placeholder="" onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
                     </div> 
                     <div className = "category" class="category">
                         <p className = "subTitle">Stall Number</p>
-                        <input type="text" value={this.state.values.stallNum} onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
+                        <input type="text" value={this.state.values.stallNum} placeholder="??" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
                     </div>
                 </div>
                 <div className = "infoRow">  
                     <div className = "category" class="categoryHalf">
                         <p className = "subTitle">Open</p>
-                        <select value={this.state.values.open} onChange={this.handleChange.bind(this, 'open')}>
+                        <select value={this.state.values.open} onChange={this.handleChange.bind(this, 'open')} class="styled-select teal rounded">
                             <option value="1">Open</option>
                             <option value="0">Closed</option>
                         </select>     
-                    </div> 
-                    <div className = "category" class="categoryHalf">
-                        <p className = "subTitle">WheelChair Accessible</p>
-                        <select value={this.state.values.wheelchair} onChange={this.handleChange.bind(this, 'wheelchair')}>
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>     
-                    </div> 
-                </div> 
-                <div className = "infoRow"> 
+                    </div>  
                     <div className = "category" class="categoryHalf">
                         <p className = "subTitle">Gender</p>
-                        <select value={this.state.values.gender} onChange={this.handleChange.bind(this, 'gender')}>
+                        <select value={this.state.values.gender} onChange={this.handleChange.bind(this, 'gender')} class="styled-select teal rounded">
                             <option value="1">Male</option>
                             <option value="0">Female</option>
                         </select>     
                     </div>
+
+                </div> 
+                <div className = "infoRow"> 
+                                    <div className = "category" class="categoryHalf">
+                        <p className = "subTitle">WheelChair Accessible</p>
+                        <select value={this.state.values.wheelchair} onChange={this.handleChange.bind(this, 'wheelchair')} class="styled-select teal rounded">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>     
+                    </div> 
                     {this.determineUrinals()}
                 </div>  
                 <div className = "infoRow">
@@ -191,7 +192,7 @@ class Newwashroom extends Component {
 
                     
                 </div>
-                <input class="userButtons" type="submit" value="Submit" />
+                <input class="userButtons buttonContainer" type="submit" value="Submit" />
             </form>
         </div> 
         );

@@ -101,9 +101,13 @@ class Newrating extends Component {
         return (
 
              <div className = "newRatingContainer"> 
+                <div className = "infoRow close" onClick = {this.close}>
+                        <i className="fa fa-times" aria-hidden="true"></i>
+                </div> 
                 <div className = "infoRow">
-                    <h1 className = "title" >{title}</h1> 
+                    <h1 className = "title" >{title}</h1>    
                 </div>
+                 
                 <form onSubmit = {this.handleSubmit}>
                     <div className = "infoRow">
                         <div className = "category">
@@ -179,7 +183,6 @@ class Newrating extends Component {
                     </textarea> </div>
                     <div><input type="submit" value="Submit" /></div>
                 </form>
-                <button type="button" className = "ratingButton cancelButton" onClick={this.close}>Discard</button>
             </div> 
         );
      }

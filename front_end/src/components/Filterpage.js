@@ -114,7 +114,7 @@ class Filterpage extends Component {
                 </div>
                 <div className = "flexRow filterCriteria">
                     <p className = "loginText">Open/Closed</p> 
-                    <select value={this.state.filtering.open} onChange={this.handleChange.bind(this, 'open')}>
+                    <select value={this.state.filtering.open} onChange={this.handleChange.bind(this, 'open')} class="styled-select teal rounded">
                         <option value="Any">Any</option>
                         <option value="Open">Open</option>
                         <option value="Closed">Closed</option>
@@ -122,7 +122,7 @@ class Filterpage extends Component {
                 </div> 
                 <div className = "flexRow filterCriteria">
                 <p className = "loginText">WheelChair Accessability</p> 
-                <select value={this.state.filtering.wheelchair} onChange={this.handleChange.bind(this, 'wheelchair')}>
+                <select value={this.state.filtering.wheelchair} onChange={this.handleChange.bind(this, 'wheelchair')} class="styled-select teal rounded">
                     <option value="Any">Any</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -130,7 +130,7 @@ class Filterpage extends Component {
                 </div> 
                 <div className = "flexRow filterCriteria">
                 <p className = "loginText">Gender</p> 
-                <select value={this.state.filtering.gender} onChange={this.handleChangeDependant.bind(this, 'gender')}>
+                <select value={this.state.filtering.gender} onChange={this.handleChangeDependant.bind(this, 'gender')} class="styled-select teal rounded">
                     <option value="Any">Any</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>

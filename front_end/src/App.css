@@ -418,6 +418,33 @@ margin: 1rem;
     width: 9rem;
 }
 
+.styled-select {
+   height: 29px;
+   overflow: hidden;
+   width: 5rem;
+  border-style: solid;
+  border-color: #10aaac;
+    }
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 5rem;
+}
+
+.rounded {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+
+.teal   { background-color: #fff; }
+
+.teal select   { color: #fff; }
+
 .loginText{
   /* Location: */
   font-family: Lato-Light;

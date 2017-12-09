@@ -110,7 +110,7 @@ class Newrating extends Component {
                     <div className = "infoRow">
                         <div className = "category">
                             <p className = "subTitle">Location</p>
-                            <select name = "location" value={this.state.value.location} onChange={this.handleChange.bind(this, 'location')}>
+                            <select name = "location" value={this.state.value.location} onChange={this.handleChange.bind(this, 'location')} class="styled-select teal rounded">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -121,7 +121,7 @@ class Newrating extends Component {
                         </div>
                         <div className = "category">
                             <p className = "subTitle">Smell</p>
-                            <select value={this.state.value.smell} onChange={this.handleChange.bind(this, 'smell')}>
+                            <select value={this.state.value.smell} onChange={this.handleChange.bind(this, 'smell')} class="styled-select teal rounded">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -132,7 +132,7 @@ class Newrating extends Component {
                         </div> 
                         <div className = "category">
                             <p className = "subTitle">Cleanliness</p>
-                            <select value={this.state.value.cleanliness} onChange={this.handleChange.bind(this, 'cleanliness')}>
+                            <select value={this.state.value.cleanliness} onChange={this.handleChange.bind(this, 'cleanliness')} class="styled-select teal rounded">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -145,7 +145,7 @@ class Newrating extends Component {
                     <div className = "infoRow">
                         <div className = "category">
                             <p className = "subTitle">Maintanence</p>
-                            <select value={this.state.value.maintanence} onChange={this.handleChange.bind(this, 'maintanence')}>
+                            <select value={this.state.value.maintanence} onChange={this.handleChange.bind(this, 'maintanence')} class="styled-select teal rounded">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -156,7 +156,7 @@ class Newrating extends Component {
                         </div>
                         <div className = "category">
                             <p className = "subTitle">Wait time</p>
-                            <select value={this.state.value.time} onChange={this.handleChange.bind(this, 'wait_time')}>
+                            <select value={this.state.value.time} onChange={this.handleChange.bind(this, 'wait_time')} class="styled-select teal rounded">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -167,7 +167,7 @@ class Newrating extends Component {
                         </div> 
                         <div className = "category">
                             <p className = "subTitle">Privacy</p> 
-                            <select value={this.state.value.privacy} onChange={this.handleChange.bind(this, 'privacy')}>
+                            <select value={this.state.value.privacy} onChange={this.handleChange.bind(this, 'privacy')} class="styled-select teal rounded">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -179,7 +179,7 @@ class Newrating extends Component {
                     </div>
                     <div class="commentBox"><textarea class="commentField" value = {this.state.comment} placeholder="Enter an optional..." onChange = {this.handleChange.bind(this, 'comment')}> 
                     </textarea> </div>
-                    <div><input type="submit" value="Submit" /></div>
+                    <div><input type="submit" value="Submit" class="userButtons buttonContainer" /></div>
                 </form>
             </div> 
         );

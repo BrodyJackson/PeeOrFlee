@@ -16,7 +16,7 @@ class Newwashroom extends Component {
                 wheelchair : "0", 
                 gender : "0", 
                 urinals : "0", 
-                comments : "", 
+                comments : "example", 
                 feminine : "1"
             } 
             

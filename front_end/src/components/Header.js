@@ -36,7 +36,8 @@ class Header extends Component {
             filterOpen: false, 
             newWashOpen: false, 
             males: [], 
-            females: []
+            females: [], 
+            recentReviewKey: 0
         }
         this.searchResultsClick = this.searchResultsClick.bind(this); 
         this.closeWashMenu = this.closeWashMenu.bind(this); 
@@ -232,19 +233,20 @@ class Header extends Component {
                             {this.createStars(ratingAverages, 5)}
                         </div> 
                     </div> 
-                    <div className = "allRatingsContainer"> 
-                        {this.renderAllRatings(ratingAverages)}
-                    </div>  
                     <div classNae = "newRatingButtonContainer">
                         <button type="button" className = "ratingButton" onClick={this.newRating}> New Rating </button>
-                    </div>  
+                    </div>
+                    <div className = "allRatingsContainer"> 
+                        {this.renderAllRatings(ratingAverages)}
+                    </div>    
                 </div>
             )
         }
     }
 
     resetRatingFlag(){
-        this.setState({rating: null}); 
+        let keyUpdate = (this.state.recentReviewKey + 1); 
+        this.setState({rating: null, recentReviewKey : keyUpdate}); 
     }
 
     newRating(){
@@ -340,6 +342,7 @@ class Header extends Component {
     }
 
     closeNewWash(){
+        
         this.setState({newWashOpen : false}); 
     }
 
@@ -363,7 +366,7 @@ class Header extends Component {
                 {this.filterRender()}
                 {this.washRender()}
                 
-                <Recentreviews></Recentreviews>
+                <Recentreviews key = {this.state.recentReviewKey}></Recentreviews>
               
             </div> 
         );

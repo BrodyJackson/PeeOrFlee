@@ -13,7 +13,7 @@ class Newwashroom extends Component {
             //the comment one below is an example 
             values : {
                 building : "MSC", 
-                rooomNum : "123", 
+                roomNum : "123", 
                 stallNum : "0", 
                 open: "1", 
                 wheelchair : "0", 
@@ -45,7 +45,8 @@ class Newwashroom extends Component {
                 open: this.state.values.open,
                 wheelchair: this.state.values.wheelchair, //value is hardcoded, we aren't doing anything with this
                 building: this.state.values.building, //value is hardcoded, we aren't doing anything with this
-                room_num: this.state.values.rooomNum, 
+                room_num: this.state.values.rooomNum,
+                comment: this.state.values.comment 
             })
             });
 
@@ -188,7 +189,7 @@ class Newwashroom extends Component {
                         <p className = "subTitle">Comments</p>
                        </div></div>
                 <div className = "infoRow">
-<div class="commentBox2"><textarea value = {this.state.comment} class="commentField" placeholder="Enter an optional comment..." onChange = {this.handleChange.bind(this, 'comment')}></textarea></div>
+                <div class="commentBox2"><textarea value = {this.state.comment} class="commentField" placeholder="Enter an optional comment..." onChange = {this.handleChange.bind(this, 'comment')}></textarea></div>
 
                     
                 </div>

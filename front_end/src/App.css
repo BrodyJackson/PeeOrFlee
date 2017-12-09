@@ -238,8 +238,7 @@
   flex-direction: column;
   justify-content: space-around;
   /* Rectangle 12: */
-  opacity: 0.65;
-  background: #D8D8D8;
+  background: whitesmoke;
   border: 1px solid #979797;
   box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.50);
   border-radius: 8px;
@@ -318,7 +317,7 @@
 
 .ratingButton{
     justify-content: center;
-    margin: 1rem;
+    margin: 6% 0 0 0;
 }
 
 .commentBox{
@@ -558,4 +557,11 @@ margin: 1rem;
   width: 100%;
   justify-content: flex-end;
   padding: 8% 13% 0 0 ; 
+}
+
+.subTitleRegular{
+  font-family: Lato-Regular;
+  font-size: 28px;
+  color: #10AAAC;
+
 }

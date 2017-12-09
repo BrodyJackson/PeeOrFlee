@@ -44,79 +44,79 @@ class Washroominfoview extends Component {
         
         if(this.state.currentWashroomView[0].open == 1){
             returnValue.push(<div className = "category">
-                <p className = "subTitle">Status</p> 
+                <p className = "subTitleRegular">Status</p> 
                 <i class="fa fa-check-square" aria-hidden="true"></i>
                 </div>); 
         }
         else{
             returnValue.push(<div className = "category">
-                <p className = "subTitle">Status</p> 
+                <p className = "subTitleRegular">Status</p> 
                 <i class="fa fa-window-close" aria-hidden="true"></i>
                 </div>); 
         }
         if(this.state.currentWashroomView[0].wheelchair == 1){
             returnValue.push(<div className = "category">
-                <p className = "subTitle">Wheelchair</p> 
+                <p className = "subTitleRegular">Wheelchair</p> 
                 <i class="fa fa-check-square" aria-hidden="true"></i>
                 </div>); 
         }
         else{
             returnValue.push(<div className = "category">
-                <p className = "subTitle">Wheelchair</p> 
+                <p className = "subTitleRegular">Wheelchair</p> 
                 <i class="fa fa-window-close" aria-hidden="true"></i>
                 </div>); 
         }
         if((maleMatch == true) && (femaleMatch == true)){
             returnValue.push(<div className = "category">
-            <p className = "subTitle">Gender</p> 
+            <p className = "subTitleRegular">Gender</p> 
             <i class="fa fa-male" aria-hidden="true"></i>
             <i class="fa fa-female" aria-hidden="true"></i>
             </div>); 
             if((feminine == 1) || (urinals == 1)){
                 returnValue.push(<div className = "category">
-                <p className = "subTitle">Amenities</p> 
+                <p className = "subTitleRegular">Amenities</p> 
                 <i class="fa fa-check-square" aria-hidden="true"></i>
                 </div>); 
             }
             else{
                 returnValue.push(<div className = "category">
-                <p className = "subTitle">Amenities</p> 
+                <p className = "subTitleRegular">Amenities</p> 
                 <i class="fa fa-window-close" aria-hidden="true"></i>
                 </div>); 
             }
         }
         else if(femaleMatch == true){
             returnValue.push(<div className = "category">
-            <p className = "subTitle">Gender</p> 
+            <p className = "subTitleRegular">Gender</p> 
             <i class="fa fa-female" aria-hidden="true"></i>
             </div>); 
             if(feminine == 1){
                 returnValue.push(<div className = "category">
-                <p className = "subTitle">Amenities</p> 
+                <p className = "subTitleRegular">Amenities</p> 
                 <i class="fa fa-check-square" aria-hidden="true"></i>
                 </div>); 
             }
             else{
                 returnValue.push(<div className = "category">
-                <p className = "subTitle">Amenities</p> 
+                <p className = "subTitleRegular">Amenities</p> 
                 <i class="fa fa-window-close" aria-hidden="true"></i>
                 </div>); 
             }
         }
         else if(maleMatch == true){
             returnValue.push(<div className = "category">
-            <p className = "subTitle">Gender</p> 
+            <p className = "subTitleRegular">Gender</p> 
             <i class="fa fa-male" aria-hidden="true"></i>
             </div>); 
             if(urinals == 1){
                 returnValue.push(<div className = "category">
-                <p className = "subTitle">Amenities</p> 
+                <p className = "subTitleRegular">Amenities</p> 
                 <i class="fa fa-check-square" aria-hidden="true"></i>
                 </div>); 
             }
             else{
                 returnValue.push(<div className = "category">
-                <p className = "subTitle">Amenities</p> 
+                <p className = "subTitleRegular">Amenities</p> 
                 <i class="fa fa-window-close" aria-hidden="true"></i>
                 </div>); 
             }

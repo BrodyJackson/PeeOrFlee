@@ -110,12 +110,20 @@ class Recentreviews extends Component {
     }
 
     renderRecents(rating){
+
+        let name = "Guest"; 
+        if(rating !== null && rating !== undefined){
+            console.log(rating); 
+            console.log(rating.user_approval, "in rating names"); 
+            name = rating.user_approval;
+        }
+         
         let renderValue = 
             <div className = "recentRatingBlock"> 
                 <div className = "flexRow">
                     <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
                 <div class="flexColumn top_info">
-                    <p className= "top_value">user #</p>
+                    <p className= "top_value">{name}</p>
                     <p className= "top_value">{this.getBathroomName(rating)}</p>
                 </div> 
                 <div className = "randomContainer"> 

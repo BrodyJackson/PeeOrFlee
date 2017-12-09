@@ -31,7 +31,6 @@ class Newwashroom extends Component {
 
     handleSubmit(event) {
         event.preventDefault(); 
-        alert('submit'); 
         let timestamp = new Date().getUTCMilliseconds();
         fetch("/bathrooms", {
             method: "POST",

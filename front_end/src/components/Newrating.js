@@ -30,7 +30,6 @@ class Newrating extends Component {
     
     handleSubmit(event) {
         event.preventDefault(); 
-        alert('submit'); 
         let timestamp = new Date().getUTCMilliseconds();
         console.log(this.state.bathroom[0].id); 
         fetch("/ratings", {
@@ -53,8 +52,7 @@ class Newrating extends Component {
           let commentText = this.state.comment; 
           console.log(commentText, 'commenttext'); 
           let dateString = new Date().toLocaleString(); 
-          let test = Date.now();
-          alert(test);  
+          let test = Date.now(); 
           fetch("/comments", {
             method: "POST",
             headers: {'Accept': 'application/json',

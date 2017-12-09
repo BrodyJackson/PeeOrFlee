@@ -82,7 +82,9 @@ class Recentreviews extends Component {
     }
 
     getBathroomName(rating){
-        // console.log(rating.bthrm_id); 
+        if((rating == undefined) || (rating == null)){
+            return(null); 
+        }
         for(let i = 0; i < this.state.allBathrooms.length; i++){
             if(rating.bthrm_id == this.state.allBathrooms[i].id){
                 return((this.state.allBathrooms[i].building + this.state.allBathrooms[i].room_num)); 

@@ -144,17 +144,6 @@ class Newwashroom extends Component {
                 <div className = "infoRow">
                     <div className = "category" class="category">
                         <p className = "subTitle">Location</p>
-<<<<<<< HEAD
-                        <input type="text" value={this.state.values.building} placeholder="Building Code" onChange = {this.handleChange.bind(this, 'building')}></input>  
-                    </div>
-                    <div className = "category" class="category">
-                        <p className = "subTitle">Room Number</p>
-                        <input type="text" value={this.state.values.roomNum} placeholder="Room Number" onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
-                    </div> 
-                    <div className = "category" class="category">
-                        <p className = "subTitle">Stall Number</p>
-                        <input type="text" value={this.state.values.stallNum} placeholder="Number of Stalls" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
-=======
                         <input type="text" value={this.state.values.building} placeholder="Exp. MSC" onChange = {this.handleChange.bind(this, 'building')}></input>  
                     </div>
                     <div className = "category" class="category">
@@ -164,7 +153,6 @@ class Newwashroom extends Component {
                     <div className = "category" class="category">
                         <p className = "subTitle">Stall Number</p>
                         <input type="text" value={this.state.values.stallNum} placeholder="Exp. 1" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
->>>>>>> refs/remotes/origin/merge-branch
                     </div>
                 </div>
                 <div className = "infoRow">  

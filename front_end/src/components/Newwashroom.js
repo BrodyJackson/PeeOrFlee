@@ -12,14 +12,14 @@ class Newwashroom extends Component {
             //when you submit you access these values 
             //the comment one below is an example 
             values : {
-                building : "MSC", 
-                rooomNum : "123", 
-                stallNum : "0", 
+                building : "", 
+                rooomNum : "", 
+                stallNum : "", 
                 open: "1", 
                 wheelchair : "0", 
                 gender : "0", 
                 urinals : "0", 
-                comments : "", 
+                comments : "example", 
                 feminine : "1"
             } 
             
@@ -145,15 +145,15 @@ class Newwashroom extends Component {
                 <div className = "infoRow">
                     <div className = "category" class="category">
                         <p className = "subTitle">Location</p>
-                        <input type="text" value={this.state.values.building} placeholder="" onChange = {this.handleChange.bind(this, 'building')}></input>  
+                        <input type="text" value={this.state.values.building} placeholder="Building Code" onChange = {this.handleChange.bind(this, 'building')}></input>  
                     </div>
                     <div className = "category" class="category">
                         <p className = "subTitle">Room Number</p>
-                        <input type="text" value={this.state.values.roomNum} placeholder="" onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
+                        <input type="text" value={this.state.values.roomNum} placeholder="Room Number" onChange = {this.handleChange.bind(this, 'roomNum')}></input>   
                     </div> 
                     <div className = "category" class="category">
                         <p className = "subTitle">Stall Number</p>
-                        <input type="text" value={this.state.values.stallNum} placeholder="??" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
+                        <input type="text" value={this.state.values.stallNum} placeholder="Number of Stalls" onChange = {this.handleChange.bind(this, 'stallNum')}></input>   
                     </div>
                 </div>
                 <div className = "infoRow">  
